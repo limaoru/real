@@ -10,12 +10,12 @@ CONFIG_PATH = ZONE_CONFIG_PATH
 
 CAMERA_CONFIGS = {
     "Cam_231_Counter": {
-        "rtsp": "rtsp://Mikhail:999ookjdf@10.10.19.231/stream2",
+        "rtsp": "rtsp://Mikhail:999ookjdf@127.0.0.1:10201/stream2",
         "width": 1280,
         "height": 720,
     },
     "Cam_104_Specialty": {
-        "rtsp": "rtsp://Mikhail:999ookjdf@10.10.19.104/stream2",
+        "rtsp": "rtsp://Mikhail:999ookjdf@127.0.0.1:10200/stream2",
         "width": 1280,
         "height": 720,
     },
