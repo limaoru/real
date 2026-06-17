@@ -49,6 +49,7 @@ from retail.config.settings import (
     MODEL_SIZE,
     POSE_EVERY_N_FRAMES,
     QUEUE_MIN_PEOPLE,
+    SEG_CONF_MIN,
     SKIN_MIN_RATIO,
     STORE_NAME,
     WEB_EXPORT_INTERVAL,
@@ -68,6 +69,7 @@ from retail.ui.overlay import build_heatmap_views, draw_analytics_panel, draw_fp
 from retail.ui.text import flush_text, queue_text
 from retail.vision.advanced import VisionAdvancedHub, blur_faces
 from retail.vision.contours import draw_person_contour
+from retail.vision.overlay_smooth import OverlaySmoothCache
 from retail.vision.pose import classify_pose, draw_skeleton
 from retail.vision.skin import detect_and_draw_skin
 from retail.vision.stream import RTSPStreamReader
@@ -97,6 +99,7 @@ def run():
     active_learn = ActiveLearningExporter()
     clip_recorders = {}
     frame_counters = {}
+    overlay_caches: dict[str, OverlaySmoothCache] = {}
 
     readers = {}
     heatmaps = {}
@@ -121,6 +124,7 @@ def run():
         cam_analytics[cam_name] = CameraAnalytics(cam_name, config["width"], config["height"])
         clip_recorders[cam_name] = ClipRecorder(cam_name)
         frame_counters[cam_name] = 0
+        overlay_caches[cam_name] = OverlaySmoothCache()
 
     LOG_DIR.mkdir(exist_ok=True)
     last_web_export = 0.0
@@ -175,10 +179,12 @@ def run():
 
                 results = model.track(
                     source=infer_frame, persist=True, device=INFER_DEVICE, verbose=False, imgsz=INFER_IMGSZ,
-                    classes=TARGET_CLASSES, tracker="bytetrack.yaml", conf=0.35, iou=0.4
+                    classes=TARGET_CLASSES, tracker="bytetrack.yaml", conf=SEG_CONF_MIN, iou=0.45
                 )
 
                 pose_by_foot = {}
+                kps_list_for_blur = []
+                smooth_cache = overlay_caches[cam_name]
                 kps_list_for_blur = []
 
                 if results[0].boxes is not None:
@@ -203,7 +209,13 @@ def run():
                             person_centers.append(foot)
                             if track_id is not None:
                                 person_boxes[track_id] = box
-                            mask_xy = masks_xy[idx] if masks_xy is not None and idx < len(masks_xy) else None
+                            raw_mask = masks_xy[idx] if masks_xy is not None and idx < len(masks_xy) else None
+                            mask_xy = None
+                            if track_id is not None:
+                                sm = smooth_cache.smooth_mask(cam_name, track_id, raw_mask)
+                                mask_xy = sm.tolist() if sm is not None else None
+                            elif raw_mask is not None:
+                                mask_xy = raw_mask
                             label_pos = draw_person_contour(frame, mask_xy, color)
                             if label_pos is None:
                                 label_pos = (int(x1), int(y1))
@@ -230,9 +242,13 @@ def run():
                             cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), color, 2)
                             queue_text(frame, f"{label}{id_str}", int(x1), int(y1) - 10, color, 18)
 
+                smooth_cache.prune_masks(cam_name, set(person_boxes.keys()))
+
                 run_pose = (frame_counters[cam_name] % max(1, POSE_EVERY_N_FRAMES) == 0)
                 if current_metrics["Person"] > 0 and run_pose:
-                    pose_results = pose_model(infer_frame, verbose=False, device=INFER_DEVICE, conf=0.35, imgsz=INFER_IMGSZ)[0]
+                    pose_results = pose_model(
+                        infer_frame, verbose=False, device=INFER_DEVICE, conf=0.4, imgsz=INFER_IMGSZ
+                    )[0]
                     if pose_results.keypoints is not None:
                         kps_xy = pose_results.keypoints.xy
                         kps_conf = pose_results.keypoints.conf
@@ -242,25 +258,32 @@ def run():
                         kps_conf_np = kps_conf.cpu().numpy() if kps_conf is not None and hasattr(kps_conf, "cpu") else (
                             np.asarray(kps_conf) if kps_conf is not None else None
                         )
-                        kps_list_for_blur = list(kps_xy_np)
-                        for pi, kp in enumerate(kps_xy_np):
-                            conf = kps_conf_np[pi] if kps_conf_np is not None else None
-                            status_en = classify_pose(kp, conf)
-                            status = POSE_ZH.get(status_en, "未知")
-                            if status_en == "Standing":
-                                current_metrics["standing"] += 1
-                            elif status_en == "Sitting":
-                                current_metrics["sitting"] += 1
-                            elif status_en == "Lying":
-                                current_metrics["lying"] += 1
-                            nose_x, nose_y = int(kp[0][0]), int(kp[0][1])
-                            if nose_x > 0 and nose_y > 0:
-                                queue_text(frame, status, nose_x, max(20, nose_y - 18), (255, 255, 255), 22)
-                            if kp[11][1] > 0 and kp[12][1] > 0:
-                                foot_est = (int((kp[11][0] + kp[12][0]) / 2), int(max(kp[11][1], kp[12][1]) + 40))
-                                pose_by_foot[foot_est] = status
-                        draw_skeleton(frame, kps_xy_np, kps_conf_np,
-                                      color=CLASS_MAPPING[0][1], thickness=3)
+                        smooth_cache.update_keypoints(cam_name, person_boxes, kps_xy_np, kps_conf_np)
+
+                for tid, kp, kp_conf in smooth_cache.iter_track_keypoints(cam_name, set(person_boxes.keys())):
+                    kps_list_for_blur.append(kp)
+                    conf = kp_conf
+                    status_en = classify_pose(kp, conf)
+                    status = POSE_ZH.get(status_en, "未知")
+                    if status_en == "Standing":
+                        current_metrics["standing"] += 1
+                    elif status_en == "Sitting":
+                        current_metrics["sitting"] += 1
+                    elif status_en == "Lying":
+                        current_metrics["lying"] += 1
+                    nose_x, nose_y = int(kp[0][0]), int(kp[0][1])
+                    if nose_x > 0 and nose_y > 0:
+                        queue_text(frame, status, nose_x, max(20, nose_y - 18), (255, 255, 255), 22)
+                    if kp[11][1] > 0 and kp[12][1] > 0:
+                        foot_est = (int((kp[11][0] + kp[12][0]) / 2), int(max(kp[11][1], kp[12][1]) + 40))
+                        pose_by_foot[foot_est] = status
+                    draw_skeleton(
+                        frame,
+                        kp.reshape(1, -1, 2),
+                        kp_conf.reshape(1, -1) if kp_conf is not None else None,
+                        color=CLASS_MAPPING[0][1],
+                        thickness=3,
+                    )
 
                 if ENABLE_FACE_BLUR and kps_list_for_blur:
                     blur_faces(frame, kps_list_for_blur)
