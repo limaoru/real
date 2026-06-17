@@ -16,7 +16,15 @@ from ultralytics import YOLO
 from retail.analytics.brain import StoreBrain
 from retail.analytics.cam import CameraAnalytics
 from retail.config.cameras import CAMERA_CONFIGS, load_zone_config
-from retail.config.models import BAG_CLASS_IDS, CLASS_MAPPING, INFER_IMGSZ, POSE_MODEL, POSE_ZH, SEG_MODEL
+from retail.config.models import (
+    BAG_CLASS_IDS,
+    CLASS_MAPPING,
+    INFER_IMGSZ,
+    POSE_MODEL,
+    POSE_ZH,
+    SEG_MODEL,
+    TARGET_CLASSES,
+)
 from retail.config.settings import (
     ANALYSIS_SCALE,
     DAILY_REPORT_HOUR,
