@@ -34,6 +34,8 @@ from retail.config.settings import (
     ENABLE_EVENT_CLIPS,
     ENABLE_FACE_BLUR,
     ENABLE_GROUP_DETECT,
+    ENABLE_HEADLESS,
+    ENABLE_LIVE_STREAM,
     ENABLE_OCR_SHELF,
     ENABLE_OPEN_VOCAB,
     ENABLE_QUEUE_DETECT,
@@ -58,6 +60,7 @@ from retail.paths import LOG_DIR
 from retail.services.active_learning import ActiveLearningExporter
 from retail.services.clips import ClipRecorder
 from retail.services.digital_twin import DigitalTwin
+from retail.services.frame_hub import FrameHub
 from retail.services.multiview import MultiViewFusion
 from retail.services.vlm import VLMBridge
 from retail.services.webhook import push_alert_webhook
@@ -79,7 +82,10 @@ def run():
     
     print(f"🔥 {STORE_NAME} 零售视界全功能启动！模型: {MODEL_SIZE} | 分割: {SEG_MODEL} | 姿态: {POSE_MODEL}")
     print("📐 区域标定: python -m retail zones  |  📊 仪表盘: python -m retail dashboard")
-    print("🧠 配置见 retail/config/settings.py")
+    if ENABLE_HEADLESS:
+        print("🖥️  无头模式：不在本机弹窗，请浏览器打开仪表盘查看实时画面")
+    if ENABLE_LIVE_STREAM:
+        print(f"📺 实时 MJPEG: http://<本机或Tailscale IP>:5050/live/<摄像头名>")
     model = YOLO(SEG_MODEL)
     pose_model = YOLO(POSE_MODEL)
     model_label = f"11{MODEL_SIZE}"
@@ -100,8 +106,9 @@ def run():
     cam_analytics = {}
 
     for cam_name, config in CAMERA_CONFIGS.items():
-        cv2.namedWindow(f"Store Analytics Platform - {cam_name}", cv2.WINDOW_NORMAL)
-        cv2.namedWindow(f"Heatmap - {cam_name}", cv2.WINDOW_NORMAL)
+        if not ENABLE_HEADLESS:
+            cv2.namedWindow(f"Store Analytics Platform - {cam_name}", cv2.WINDOW_NORMAL)
+            cv2.namedWindow(f"Heatmap - {cam_name}", cv2.WINDOW_NORMAL)
         reader = RTSPStreamReader(cam_name, config["rtsp"], config["width"], config["height"])
         reader.daemon = True
         reader.start()
@@ -398,8 +405,13 @@ def run():
                 analytics.maybe_snapshot_heatmap(heatmap_panel)
                 metrics_by_cam[cam_name] = dict(current_metrics)
 
-                cv2.imshow(f"Store Analytics Platform - {cam_name}", overlay_frame)
-                cv2.imshow(f"Heatmap - {cam_name}", heatmap_panel)
+                if ENABLE_LIVE_STREAM:
+                    FrameHub.publish(cam_name, overlay_frame)
+                    FrameHub.publish(FrameHub.heatmap_key(cam_name), heatmap_panel)
+
+                if not ENABLE_HEADLESS:
+                    cv2.imshow(f"Store Analytics Platform - {cam_name}", overlay_frame)
+                    cv2.imshow(f"Heatmap - {cam_name}", heatmap_panel)
 
             now = time.time()
             if ENABLE_WEB_DASHBOARD and now - last_web_export >= WEB_EXPORT_INTERVAL:
@@ -425,11 +437,15 @@ def run():
                     except OSError as e:
                         print(f"日报生成失败: {e}")
 
-            if cv2.waitKey(1) & 0xFF == ord('q'):
+            if not ENABLE_HEADLESS and cv2.waitKey(1) & 0xFF == ord("q"):
                 break
+            if ENABLE_HEADLESS:
+                time.sleep(0.001)
 
-    for reader in readers.values(): reader.stop()
-    cv2.destroyAllWindows()
+    for reader in readers.values():
+        reader.stop()
+    if not ENABLE_HEADLESS:
+        cv2.destroyAllWindows()
 
 
 

@@ -17,5 +17,6 @@ TWIN_STATE_PATH = LOG_DIR / "twin_state.json"
 VLM_DIR = LOG_DIR / "vlm"
 VLM_STATE_PATH = VLM_DIR / "latest_insight.json"
 VLM_STATE = VLM_STATE_PATH
+LIVE_FRAMES_DIR = LOG_DIR / "live_frames"
 ACTIVE_LEARNING_DIR = LOG_DIR / "active_learning"
 ACTIVE_LEARNING_INDEX_PATH = ACTIVE_LEARNING_DIR / "index.json"

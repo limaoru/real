@@ -4,6 +4,8 @@ from __future__ import annotations
 import argparse
 import sys
 
+from retail.config.settings import DASHBOARD_PORT
+
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
@@ -13,7 +15,7 @@ def main(argv: list[str] | None = None) -> int:
     sub = parser.add_subparsers(dest="command", required=True)
 
     sub.add_parser("run", help="启动双路 RTSP 分析主程序")
-    sub.add_parser("dashboard", help="启动 Web 仪表盘 (端口 5050)")
+    sub.add_parser("dashboard", help=f"启动 Web 仪表盘 (端口 {DASHBOARD_PORT})")
     zones = sub.add_parser("zones", help="区域/越线鼠标标定工具")
     zones.add_argument("camera", nargs="?", help="摄像头名称")
 

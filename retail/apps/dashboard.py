@@ -2,17 +2,21 @@
 """
 店铺零售 Web 仪表盘（视觉进阶全功能版）
 
-运行：python3 dashboard.py
+运行：python -m retail dashboard
 访问：http://127.0.0.1:5050
+实时画面：http://<IP>:5050/live/<摄像头名>
 """
 import csv
 import json
+import time
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
-from urllib.parse import parse_qs, urlparse
+from urllib.parse import parse_qs, unquote, urlparse
 
+from retail.config.settings import DASHBOARD_HOST, DASHBOARD_PORT, LIVE_STREAM_FPS
 from retail.paths import CHAIN_SUMMARY_PATH, CLIP_DIR, LIVE_STATE_PATH as LIVE_STATE, LOG_DIR
 from retail.services.digital_twin import DigitalTwin
+from retail.services.frame_hub import FrameHub
 from retail.services.multistore import list_stores
 from retail.services.vlm import VLMBridge
 
@@ -40,9 +44,16 @@ th{color:#8b949e}
 .qa-box input{flex:1;padding:8px;border-radius:8px;border:1px solid #30363d;background:#0d1117;color:#e8eaed}
 .qa-box button{padding:8px 14px;border-radius:8px;border:none;background:#238636;color:#fff;cursor:pointer}
 .clip-link{color:#58a6ff;font-size:.8rem;display:block;margin:4px 0}
+.live-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:16px}
+.live-box h3{font-size:.9rem;color:#8b949e;margin-bottom:8px}
+.live-box img{width:100%;border-radius:8px;background:#000;min-height:180px}
+.live-label{font-size:.75rem;color:#6e7681;margin:6px 0 2px}
 </style></head><body>
 <h1>店铺智能 BI 仪表盘</h1>
-<p class="sub">更新：<span id="u">-</span> · 5秒刷新 · 视觉进阶全开（不含非视觉传感）</p>
+<p class="sub">更新：<span id="u">-</span> · 5秒刷新 · Tailscale/Mac 可看实时 MJPEG</p>
+<div class="section card"><h2>实时分析画面</h2>
+<p class="sub" style="margin-bottom:12px">需 PC 运行 <code>python -m retail run</code>；单路直达 <code>/live/摄像头名</code></p>
+<div class="live-grid" id="live"></div></div>
 <div class="grid" id="cards"></div>
 <div class="section card"><h2>今日动线漏斗</h2><div id="funnel"></div>
 <p style="margin-top:8px" id="features"></p></div>
@@ -91,7 +102,16 @@ async function go(){
       <div class="stat"><span>漏斗 入/览/收</span><span class="val">${f.入口||0}/${f.浏览||0}/${f.收银||0}</span></div>
       <div style="margin-top:8px;font-size:.8rem" class="warn">${(v.alerts||[]).slice(0,3).join('<br>')||'无告警'}</div></div>`;
   }
-  document.getElementById('cards').innerHTML=h||'<p>请先运行 python3 78.py</p>';
+  document.getElementById('cards').innerHTML=h||'<p>请先运行 python -m retail run</p>';
+  const cams=Object.keys(d.cameras||{});
+  document.getElementById('live').innerHTML=cams.length?cams.map(cam=>{
+    const enc=encodeURIComponent(cam);
+    return `<div class="live-box"><h3>${cam}</h3>
+      <div class="live-label">分析叠加</div>
+      <img src="/live/${enc}" alt="${cam}"/>
+      <div class="live-label">热力图</div>
+      <img src="/live/${enc}/heatmap" alt="${cam} heatmap"/></div>`;
+  }).join(''):'<p>等待主程序推流…</p>';
   const gf=d.global?.funnel||{};
   const mx=Math.max(1,gf.入口||0,gf.浏览||0,gf.收银||0);
   document.getElementById('funnel').innerHTML=`
@@ -173,12 +193,49 @@ def read_history(limit=20):
     return rows[:limit]
 
 
+def _parse_live_path(path: str) -> str | None:
+    """/live/Cam_xxx 或 /live/Cam_xxx/heatmap → FrameHub stream key"""
+    if not path.startswith("/live/"):
+        return None
+    rest = unquote(path[len("/live/"):].strip("/"))
+    if not rest:
+        return None
+    if rest.endswith("/heatmap"):
+        cam = rest[: -len("/heatmap")].strip("/")
+        return FrameHub.heatmap_key(cam) if cam else None
+    return rest
+
+
 class Handler(BaseHTTPRequestHandler):
     def log_message(self, *_):
         pass
 
+    def _stream_mjpeg(self, stream_key: str) -> None:
+        boundary = b"frame"
+        self.send_response(200)
+        self.send_header("Content-Type", f"multipart/x-mixed-replace; boundary={boundary.decode()}")
+        self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
+        self.send_header("Connection", "close")
+        self.end_headers()
+        interval = 1.0 / max(1, LIVE_STREAM_FPS)
+        try:
+            while True:
+                jpeg = FrameHub.get_jpeg(stream_key)
+                if jpeg:
+                    self.wfile.write(b"--frame\r\nContent-Type: image/jpeg\r\n\r\n")
+                    self.wfile.write(jpeg)
+                    self.wfile.write(b"\r\n")
+                    self.wfile.flush()
+                time.sleep(interval)
+        except (BrokenPipeError, ConnectionResetError, OSError):
+            pass
+
     def do_GET(self):
         path = urlparse(self.path).path
+        stream_key = _parse_live_path(path)
+        if stream_key is not None:
+            self._stream_mjpeg(stream_key)
+            return
         if path == "/api/all":
             data = read_live()
             data["history"] = read_history()
@@ -217,9 +274,13 @@ class Handler(BaseHTTPRequestHandler):
             self.wfile.write(HTML.encode("utf-8"))
 
 
-def serve(host: str = "0.0.0.0", port: int = 5050) -> None:
+def serve(host: str | None = None, port: int | None = None) -> None:
+    host = host or DASHBOARD_HOST
+    port = port or DASHBOARD_PORT
     LOG_DIR.mkdir(exist_ok=True)
     print(f"仪表盘: http://127.0.0.1:{port}")
+    print(f"实时画面: http://127.0.0.1:{port}/live/<摄像头名>")
+    print("Tailscale: 将 127.0.0.1 换成 PC 的 100.x.x.x")
     HTTPServer((host, port), Handler).serve_forever()
 
 
