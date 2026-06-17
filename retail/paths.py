@@ -15,5 +15,7 @@ LIVE_STATE_PATH = LOG_DIR / "live_state.json"
 STORES_REGISTRY_PATH = PROJECT_ROOT / "stores_registry.json"
 TWIN_STATE_PATH = LOG_DIR / "twin_state.json"
 VLM_DIR = LOG_DIR / "vlm"
+VLM_STATE_PATH = VLM_DIR / "latest_insight.json"
+VLM_STATE = VLM_STATE_PATH
 ACTIVE_LEARNING_DIR = LOG_DIR / "active_learning"
 ACTIVE_LEARNING_INDEX_PATH = ACTIVE_LEARNING_DIR / "index.json"
