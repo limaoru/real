@@ -337,8 +337,13 @@ def run():
                     if insight and brain.db:
                         brain.db.log_vlm_insight(insight)
 
-                if results[0].boxes is not None and results[0].boxes.conf is not None:
-                    low_conf = float(results[0].boxes.conf.min().cpu().numpy())
+                conf_tensor = (
+                    results[0].boxes.conf
+                    if results[0].boxes is not None and results[0].boxes.conf is not None
+                    else None
+                )
+                if conf_tensor is not None and conf_tensor.numel() > 0:
+                    low_conf = float(conf_tensor.min().cpu().item())
                     active_learn.maybe_export(frame, cam_name, "low_conf", low_conf)
 
                 analytics.prune_stale_tracks()
