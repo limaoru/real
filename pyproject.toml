@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "retail-analytics"
+version = "2.0.0"
+description = "零售店铺视觉智能分析（YOLO + BI 仪表盘）"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "opencv-python",
+    "pillow",
+    "torch",
+    "ultralytics",
+]
+
+[project.optional-dependencies]
+ocr = ["easyocr"]
+forecast = ["scikit-learn"]
+all = ["easyocr", "scikit-learn"]
+
+[project.scripts]
+retail = "retail.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["retail*"]
