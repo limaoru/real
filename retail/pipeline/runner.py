@@ -88,8 +88,10 @@ def run():
         print("🖥️  无头模式：不在本机弹窗，请浏览器打开仪表盘查看实时画面")
     if ENABLE_LIVE_STREAM:
         print(f"📺 实时 MJPEG: http://<本机或Tailscale IP>:5050/live/<摄像头名>")
-    model = YOLO(SEG_MODEL)
-    pose_model = YOLO(POSE_MODEL)
+    cam_names = list(CAMERA_CONFIGS.keys())
+    print(f"📦 加载 {len(cam_names)} 路独立跟踪模型（每摄像头 persist 隔离）…")
+    seg_models = {name: YOLO(SEG_MODEL) for name in cam_names}
+    pose_models = {name: YOLO(POSE_MODEL) for name in cam_names}
     model_label = f"11{MODEL_SIZE}"
     brain = StoreBrain()
     vision_hub = VisionAdvancedHub()
@@ -148,8 +150,14 @@ def run():
         while True:
             pending_frames = []
             for cam_name, reader in readers.items():
-                if not reader.frame_queue.empty():
-                    pending_frames.append((cam_name, reader.frame_queue.get()))
+                if reader.frame_queue.empty():
+                    continue
+                pending_frames.append((cam_name, reader.frame_queue.get()))
+                while reader.frame_queue.qsize() > 0:
+                    try:
+                        pending_frames[-1] = (cam_name, reader.frame_queue.get_nowait())
+                    except Empty:
+                        break
 
             for cam_name, frame in pending_frames:
                 reader = readers[cam_name]
@@ -177,7 +185,7 @@ def run():
                 person_boxes = {}
                 object_boxes = []
 
-                results = model.track(
+                results = seg_models[cam_name].track(
                     source=infer_frame, persist=True, device=INFER_DEVICE, half=True, verbose=False,
                     imgsz=INFER_IMGSZ, classes=TARGET_CLASSES, tracker="bytetrack.yaml",
                     conf=SEG_CONF_MIN, iou=0.45,
@@ -247,7 +255,7 @@ def run():
 
                 run_pose = (frame_counters[cam_name] % max(1, POSE_EVERY_N_FRAMES) == 0)
                 if current_metrics["Person"] > 0 and run_pose:
-                    pose_results = pose_model(
+                    pose_results = pose_models[cam_name](
                         infer_frame, verbose=False, device=INFER_DEVICE, half=True, conf=0.4,
                         imgsz=INFER_IMGSZ,
                     )[0]
@@ -449,7 +457,10 @@ def run():
                     "attribution": brain.attribution.export(),
                     "active_learning": active_learn.list_pending(8),
                 }
-                export_live_state(cam_analytics, customer_counts, fps_state, metrics_by_cam, brain, brain_summaries, extras)
+                export_live_state(
+                    cam_analytics, customer_counts, fps_state, metrics_by_cam, brain, brain_summaries, extras,
+                    stream_online={name: r.online for name, r in readers.items()},
+                )
                 last_web_export = now
 
             if ENABLE_DAILY_REPORT and datetime.now().hour == DAILY_REPORT_HOUR:

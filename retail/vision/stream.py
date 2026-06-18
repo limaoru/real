@@ -18,6 +18,8 @@ class RTSPStreamReader(threading.Thread):
         self.frame_queue: Queue = Queue(maxsize=3)
         self.stopped = False
         self.cap = None
+        self.online = False
+        self.last_frame_at = 0.0
 
     def _open_capture(self):
         cap = cv2.VideoCapture(self.rtsp_url, cv2.CAP_FFMPEG)
@@ -30,16 +32,21 @@ class RTSPStreamReader(threading.Thread):
 
         while not self.stopped:
             if not self.cap.isOpened():
+                self.online = False
                 time.sleep(2)
                 self.cap = self._open_capture()
                 continue
 
             ret, frame = self.cap.read()
             if not ret or frame is None:
+                self.online = False
                 self.cap.release()
                 time.sleep(2)
                 self.cap = self._open_capture()
                 continue
+
+            self.online = True
+            self.last_frame_at = time.time()
 
             if frame.shape[1] != self.width or frame.shape[0] != self.height:
                 frame = cv2.resize(frame, (self.width, self.height))

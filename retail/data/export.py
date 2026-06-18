@@ -17,10 +17,12 @@ def export_live_state(
     brain=None,
     brain_summaries=None,
     extras=None,
+    stream_online=None,
 ) -> None:
     if not ENABLE_WEB_DASHBOARD:
         return
     extras = extras or {}
+    stream_online = stream_online or {}
     payload = {
         "updated": datetime.now().isoformat(timespec="seconds"),
         "cameras": {},
@@ -53,6 +55,7 @@ def export_live_state(
             "hourly": dict(analytics.hourly),
             "alerts": list(analytics.alerts),
             "fps": round(fps_state.get(cam_name, {}).get("fps", 0), 1),
+            "stream_online": stream_online.get(cam_name, False),
         }
         if brain_summaries and cam_name in brain_summaries:
             entry["plus"] = brain_summaries[cam_name]

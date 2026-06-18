@@ -9,7 +9,7 @@
 import csv
 import json
 import time
-from http.server import BaseHTTPRequestHandler, HTTPServer
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, unquote, urlparse
 
@@ -105,8 +105,10 @@ async function go(){
   document.getElementById('cards').innerHTML=h||'<p>请先运行 python -m retail run</p>';
   const cams=Object.keys(d.cameras||{});
   document.getElementById('live').innerHTML=cams.length?cams.map(cam=>{
+    const v=d.cameras[cam]||{};
     const enc=encodeURIComponent(cam);
-    return `<div class="live-box"><h3>${cam}</h3>
+    const st=v.stream_online===false?'<span class="warn"> · RTSP 未连接</span>':'';
+    return `<div class="live-box"><h3>${cam}${st}</h3>
       <div class="live-label">分析叠加</div>
       <img src="/live/${enc}" alt="${cam}"/>
       <div class="live-label">热力图</div>
@@ -281,7 +283,7 @@ def serve(host: str | None = None, port: int | None = None) -> None:
     print(f"仪表盘: http://127.0.0.1:{port}")
     print(f"实时画面: http://127.0.0.1:{port}/live/<摄像头名>")
     print("Tailscale: 将 127.0.0.1 换成 PC 的 100.x.x.x")
-    HTTPServer((host, port), Handler).serve_forever()
+    ThreadingHTTPServer((host, port), Handler).serve_forever()
 
 
 if __name__ == "__main__":
