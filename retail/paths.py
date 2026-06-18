@@ -20,3 +20,5 @@ VLM_STATE = VLM_STATE_PATH
 LIVE_FRAMES_DIR = LOG_DIR / "live_frames"
 ACTIVE_LEARNING_DIR = LOG_DIR / "active_learning"
 ACTIVE_LEARNING_INDEX_PATH = ACTIVE_LEARNING_DIR / "index.json"
+OPENVINO_MODEL_DIR = PROJECT_ROOT / "openvino_models"
+BYTETRACK_CONFIG = PACKAGE_ROOT / "config" / "bytetrack.yaml"

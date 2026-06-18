@@ -44,7 +44,7 @@ def match_poses_to_tracks(
                 score = -dist
             if score > best_score:
                 best_score, best_tid = score, tid
-        if best_tid is not None and best_score > -200**2:
+        if best_tid is not None and best_score > -400**2:
             mapping[pi] = best_tid
             used.add(best_tid)
     return mapping
@@ -60,6 +60,23 @@ class OverlaySmoothCache:
         self._kp_conf: dict[tuple, np.ndarray] = {}
         self._mask_age: dict[tuple, int] = {}
         self._kp_age: dict[tuple, int] = {}
+        self._boxes: dict[tuple, np.ndarray] = {}
+
+    def smooth_box(self, cam: str, track_id: int, box) -> np.ndarray:
+        key = (cam, track_id)
+        pts = np.asarray(box, dtype=np.float32)
+        if key in self._boxes:
+            pts = self.alpha * pts + (1.0 - self.alpha) * self._boxes[key]
+        self._boxes[key] = pts.copy()
+        return pts
+
+    def prune_boxes(self, cam: str, active_track_ids: set[int]) -> None:
+        for key in list(self._boxes.keys()):
+            if key[0] != cam:
+                continue
+            if key[1] in active_track_ids:
+                continue
+            self._boxes.pop(key, None)
 
     def smooth_mask(self, cam: str, track_id: int, mask_xy) -> np.ndarray | None:
         key = (cam, track_id)
@@ -122,6 +139,7 @@ class OverlaySmoothCache:
                 self._kp_age.pop(key, None)
 
     def prune_masks(self, cam: str, active_track_ids: set[int]) -> None:
+        self.prune_boxes(cam, active_track_ids)
         for key in list(self._masks.keys()):
             if key[0] != cam:
                 continue

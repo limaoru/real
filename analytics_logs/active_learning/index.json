@@ -1,0 +1,1052 @@
+[
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125949_829419.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4043057858943939,
+    "ts": "2026-06-18T12:59:49"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_231_Counter_20260618_125942_389980.jpg",
+    "cam": "Cam_231_Counter",
+    "reason": "low_conf",
+    "conf": 0.270851194858551,
+    "ts": "2026-06-18T12:59:42"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125916_161441.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.39191755652427673,
+    "ts": "2026-06-18T12:59:16"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125912_693368.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.38391372561454773,
+    "ts": "2026-06-18T12:59:12"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_231_Counter_20260618_125910_182171.jpg",
+    "cam": "Cam_231_Counter",
+    "reason": "low_conf",
+    "conf": 0.2514435648918152,
+    "ts": "2026-06-18T12:59:10"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125909_922070.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4466550946235657,
+    "ts": "2026-06-18T12:59:09"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125904_431263.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.3999871015548706,
+    "ts": "2026-06-18T12:59:04"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_231_Counter_20260618_125903_801255.jpg",
+    "cam": "Cam_231_Counter",
+    "reason": "low_conf",
+    "conf": 0.3884444832801819,
+    "ts": "2026-06-18T12:59:03"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125902_676994.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.3801262676715851,
+    "ts": "2026-06-18T12:59:02"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_231_Counter_20260618_125901_887767.jpg",
+    "cam": "Cam_231_Counter",
+    "reason": "low_conf",
+    "conf": 0.3285837173461914,
+    "ts": "2026-06-18T12:59:01"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125901_625245.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.3780934810638428,
+    "ts": "2026-06-18T12:59:01"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_231_Counter_20260618_125859_551079.jpg",
+    "cam": "Cam_231_Counter",
+    "reason": "low_conf",
+    "conf": 0.2932364344596863,
+    "ts": "2026-06-18T12:58:59"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125857_665912.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.41607797145843506,
+    "ts": "2026-06-18T12:58:57"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125854_981597.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.30508607625961304,
+    "ts": "2026-06-18T12:58:54"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125636_206340.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.44933515787124634,
+    "ts": "2026-06-18T12:56:36"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125634_308407.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4110010862350464,
+    "ts": "2026-06-18T12:56:34"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_231_Counter_20260618_125623_829322.jpg",
+    "cam": "Cam_231_Counter",
+    "reason": "low_conf",
+    "conf": 0.40475791692733765,
+    "ts": "2026-06-18T12:56:23"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125614_269784.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.38778090476989746,
+    "ts": "2026-06-18T12:56:14"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_231_Counter_20260618_125157_309377.jpg",
+    "cam": "Cam_231_Counter",
+    "reason": "low_conf",
+    "conf": 0.4285764694213867,
+    "ts": "2026-06-18T12:51:57"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125012_662148.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4018864333629608,
+    "ts": "2026-06-18T12:50:12"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125012_310546.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4018864333629608,
+    "ts": "2026-06-18T12:50:12"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_231_Counter_20260618_125008_766776.jpg",
+    "cam": "Cam_231_Counter",
+    "reason": "low_conf",
+    "conf": 0.4106547236442566,
+    "ts": "2026-06-18T12:50:08"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_231_Counter_20260618_125008_523512.jpg",
+    "cam": "Cam_231_Counter",
+    "reason": "low_conf",
+    "conf": 0.4106547236442566,
+    "ts": "2026-06-18T12:50:08"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_231_Counter_20260618_125008_304393.jpg",
+    "cam": "Cam_231_Counter",
+    "reason": "low_conf",
+    "conf": 0.4106547236442566,
+    "ts": "2026-06-18T12:50:08"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125006_497367.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4219492971897125,
+    "ts": "2026-06-18T12:50:06"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125006_253555.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4219492971897125,
+    "ts": "2026-06-18T12:50:06"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125003_884039.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4294723868370056,
+    "ts": "2026-06-18T12:50:03"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125003_614406.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4294723868370056,
+    "ts": "2026-06-18T12:50:03"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125003_336948.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4294723868370056,
+    "ts": "2026-06-18T12:50:03"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125003_021721.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4294723868370056,
+    "ts": "2026-06-18T12:50:03"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124956_037745.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.44490116834640503,
+    "ts": "2026-06-18T12:49:56"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124955_833222.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.44490116834640503,
+    "ts": "2026-06-18T12:49:55"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124955_609846.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.44490116834640503,
+    "ts": "2026-06-18T12:49:55"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124955_312398.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.44490116834640503,
+    "ts": "2026-06-18T12:49:55"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124955_021311.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.44490116834640503,
+    "ts": "2026-06-18T12:49:55"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124954_826189.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.44490116834640503,
+    "ts": "2026-06-18T12:49:54"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124954_683243.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.44490116834640503,
+    "ts": "2026-06-18T12:49:54"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124954_483334.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.44490116834640503,
+    "ts": "2026-06-18T12:49:54"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124954_321060.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.44490116834640503,
+    "ts": "2026-06-18T12:49:54"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124954_112710.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.44490116834640503,
+    "ts": "2026-06-18T12:49:54"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124953_847963.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.44490116834640503,
+    "ts": "2026-06-18T12:49:53"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124953_687585.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.44490116834640503,
+    "ts": "2026-06-18T12:49:53"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124953_526230.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.44490116834640503,
+    "ts": "2026-06-18T12:49:53"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124953_376487.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.44490116834640503,
+    "ts": "2026-06-18T12:49:53"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124953_233130.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.44490116834640503,
+    "ts": "2026-06-18T12:49:53"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124953_089626.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.44490116834640503,
+    "ts": "2026-06-18T12:49:53"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124952_880150.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.44490116834640503,
+    "ts": "2026-06-18T12:49:52"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124951_750377.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4055110514163971,
+    "ts": "2026-06-18T12:49:51"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124951_517088.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4055110514163971,
+    "ts": "2026-06-18T12:49:51"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124950_326235.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.42611441016197205,
+    "ts": "2026-06-18T12:49:50"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124949_094571.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.42138421535491943,
+    "ts": "2026-06-18T12:49:49"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124948_871145.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.42138421535491943,
+    "ts": "2026-06-18T12:49:48"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124948_685405.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.42138421535491943,
+    "ts": "2026-06-18T12:49:48"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124945_313771.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.3891902267932892,
+    "ts": "2026-06-18T12:49:45"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124943_086309.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.39966532588005066,
+    "ts": "2026-06-18T12:49:43"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124941_979460.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4016880691051483,
+    "ts": "2026-06-18T12:49:41"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124940_787201.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.38199925422668457,
+    "ts": "2026-06-18T12:49:40"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124939_703946.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4190117120742798,
+    "ts": "2026-06-18T12:49:39"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124939_448412.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4190117120742798,
+    "ts": "2026-06-18T12:49:39"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124935_205190.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4116038978099823,
+    "ts": "2026-06-18T12:49:35"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124934_253597.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4390642046928406,
+    "ts": "2026-06-18T12:49:34"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_124931_664152.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.42207759618759155,
+    "ts": "2026-06-18T12:49:31"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123755_766070.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.39453476667404175,
+    "ts": "2026-06-18T12:37:55"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123752_924182.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.40148648619651794,
+    "ts": "2026-06-18T12:37:52"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123741_319806.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.3822307288646698,
+    "ts": "2026-06-18T12:37:41"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123738_538570.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.3941669166088104,
+    "ts": "2026-06-18T12:37:38"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123734_743724.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.39229533076286316,
+    "ts": "2026-06-18T12:37:34"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123408_595004.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4345676898956299,
+    "ts": "2026-06-18T12:34:08"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123355_573178.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.39072567224502563,
+    "ts": "2026-06-18T12:33:55"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123354_171107.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4034460186958313,
+    "ts": "2026-06-18T12:33:54"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123351_401569.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.38662639260292053,
+    "ts": "2026-06-18T12:33:51"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123347_185882.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4032512903213501,
+    "ts": "2026-06-18T12:33:47"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123342_768114.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.3922429382801056,
+    "ts": "2026-06-18T12:33:42"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123338_700705.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4042305648326874,
+    "ts": "2026-06-18T12:33:38"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123335_833669.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.384064644575119,
+    "ts": "2026-06-18T12:33:35"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123334_398401.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.40819650888442993,
+    "ts": "2026-06-18T12:33:34"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123330_156091.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4200262427330017,
+    "ts": "2026-06-18T12:33:30"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123328_731136.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4311685264110565,
+    "ts": "2026-06-18T12:33:28"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_231_Counter_20260618_123323_946543.jpg",
+    "cam": "Cam_231_Counter",
+    "reason": "low_conf",
+    "conf": 0.41252055764198303,
+    "ts": "2026-06-18T12:33:23"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123323_193732.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.39359816908836365,
+    "ts": "2026-06-18T12:33:23"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123310_959977.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.3932553231716156,
+    "ts": "2026-06-18T12:33:10"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123308_207296.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4083916246891022,
+    "ts": "2026-06-18T12:33:08"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123306_475078.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4074189364910126,
+    "ts": "2026-06-18T12:33:06"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123305_038573.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.417358934879303,
+    "ts": "2026-06-18T12:33:05"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123300_935133.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.38279253244400024,
+    "ts": "2026-06-18T12:33:00"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123252_770057.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.42739754915237427,
+    "ts": "2026-06-18T12:32:52"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123248_449857.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4079827070236206,
+    "ts": "2026-06-18T12:32:48"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123247_018746.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.38966795802116394,
+    "ts": "2026-06-18T12:32:47"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123245_609478.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.40569981932640076,
+    "ts": "2026-06-18T12:32:45"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123244_207321.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.43930989503860474,
+    "ts": "2026-06-18T12:32:44"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123242_800875.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.41192591190338135,
+    "ts": "2026-06-18T12:32:42"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123238_608854.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4092232286930084,
+    "ts": "2026-06-18T12:32:38"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123220_282844.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.396928608417511,
+    "ts": "2026-06-18T12:32:20"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123208_339276.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.40563106536865234,
+    "ts": "2026-06-18T12:32:08"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123137_435146.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.38109347224235535,
+    "ts": "2026-06-18T12:31:37"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123135_678485.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.3986373543739319,
+    "ts": "2026-06-18T12:31:35"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123122_095489.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4144011437892914,
+    "ts": "2026-06-18T12:31:22"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123120_705759.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.39291656017303467,
+    "ts": "2026-06-18T12:31:20"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123107_334161.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4431804120540619,
+    "ts": "2026-06-18T12:31:07"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123105_927950.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4244184195995331,
+    "ts": "2026-06-18T12:31:05"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123101_840970.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.41729316115379333,
+    "ts": "2026-06-18T12:31:01"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123050_701260.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.38355550169944763,
+    "ts": "2026-06-18T12:30:50"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123049_345366.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.38503700494766235,
+    "ts": "2026-06-18T12:30:49"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123047_930873.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.40372711420059204,
+    "ts": "2026-06-18T12:30:47"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123045_204210.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.42344430088996887,
+    "ts": "2026-06-18T12:30:45"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123043_708768.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.39590340852737427,
+    "ts": "2026-06-18T12:30:43"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123042_281806.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.44229936599731445,
+    "ts": "2026-06-18T12:30:42"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123040_854618.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.42154672741889954,
+    "ts": "2026-06-18T12:30:40"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123039_388616.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.43982627987861633,
+    "ts": "2026-06-18T12:30:39"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123037_876007.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4299360513687134,
+    "ts": "2026-06-18T12:30:37"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123036_539774.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4095136523246765,
+    "ts": "2026-06-18T12:30:36"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123035_121138.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.42417556047439575,
+    "ts": "2026-06-18T12:30:35"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123015_794919.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4314195215702057,
+    "ts": "2026-06-18T12:30:15"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123012_644809.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.3989463746547699,
+    "ts": "2026-06-18T12:30:12"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_231_Counter_20260618_123011_869938.jpg",
+    "cam": "Cam_231_Counter",
+    "reason": "low_conf",
+    "conf": 0.44691306352615356,
+    "ts": "2026-06-18T12:30:11"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123008_226014.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4407215714454651,
+    "ts": "2026-06-18T12:30:08"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123006_545729.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.382520467042923,
+    "ts": "2026-06-18T12:30:06"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123004_998834.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.39189356565475464,
+    "ts": "2026-06-18T12:30:05"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_123001_987028.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.3881017565727234,
+    "ts": "2026-06-18T12:30:02"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122945_480878.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.40235304832458496,
+    "ts": "2026-06-18T12:29:45"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122942_286085.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.38781747221946716,
+    "ts": "2026-06-18T12:29:42"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122936_763090.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.3879052996635437,
+    "ts": "2026-06-18T12:29:36"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122930_569533.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.3934613764286041,
+    "ts": "2026-06-18T12:29:30"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122929_881400.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.3965623676776886,
+    "ts": "2026-06-18T12:29:29"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122927_143113.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.39572766423225403,
+    "ts": "2026-06-18T12:29:27"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122925_859022.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.40926310420036316,
+    "ts": "2026-06-18T12:29:25"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122924_579468.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.42549240589141846,
+    "ts": "2026-06-18T12:29:24"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122920_864507.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.3877722918987274,
+    "ts": "2026-06-18T12:29:20"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122919_610567.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.38926151394844055,
+    "ts": "2026-06-18T12:29:19"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122903_055958.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.3864736258983612,
+    "ts": "2026-06-18T12:29:03"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122901_734883.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4271320700645447,
+    "ts": "2026-06-18T12:29:01"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_231_Counter_20260618_122901_081639.jpg",
+    "cam": "Cam_231_Counter",
+    "reason": "low_conf",
+    "conf": 0.39910176396369934,
+    "ts": "2026-06-18T12:29:01"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122853_065737.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.42801207304000854,
+    "ts": "2026-06-18T12:28:53"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122851_720436.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.42843613028526306,
+    "ts": "2026-06-18T12:28:51"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122848_936638.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.39757442474365234,
+    "ts": "2026-06-18T12:28:48"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122847_524750.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.43048062920570374,
+    "ts": "2026-06-18T12:28:47"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122842_004143.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.40121427178382874,
+    "ts": "2026-06-18T12:28:42"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122823_049896.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4304904639720917,
+    "ts": "2026-06-18T12:28:23"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122820_012370.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.432582288980484,
+    "ts": "2026-06-18T12:28:20"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122812_394472.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.40139734745025635,
+    "ts": "2026-06-18T12:28:12"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122810_817924.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4395967423915863,
+    "ts": "2026-06-18T12:28:10"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122755_144758.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.438494473695755,
+    "ts": "2026-06-18T12:27:55"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122753_699864.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.43990689516067505,
+    "ts": "2026-06-18T12:27:53"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122747_768677.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4379448890686035,
+    "ts": "2026-06-18T12:27:47"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122735_100846.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4466691017150879,
+    "ts": "2026-06-18T12:27:35"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122733_628825.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.3955470621585846,
+    "ts": "2026-06-18T12:27:33"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122720_828036.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4003450870513916,
+    "ts": "2026-06-18T12:27:20"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122719_523743.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.3848806619644165,
+    "ts": "2026-06-18T12:27:19"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122714_475605.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.3902677297592163,
+    "ts": "2026-06-18T12:27:14"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_122709_211270.jpg",
+    "cam": "Cam_104_Specialty",
+    "reason": "low_conf",
+    "conf": 0.4391443133354187,
+    "ts": "2026-06-18T12:27:09"
+  }
+]

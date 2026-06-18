@@ -15,13 +15,13 @@ from retail.config.settings import (
     ENABLE_OPEN_VOCAB,
     ENABLE_SAM_REFINE,
     FACE_BLUR_STRENGTH,
-    INFER_DEVICE,
     OCR_INTERVAL_SEC,
     OPEN_VOCAB_INTERVAL,
     OPEN_VOCAB_MODEL,
     OPEN_VOCAB_PROMPTS,
     SAM_MODEL,
 )
+from retail.vision.infer_backend import load_yolo_model, torch_device, use_fp16, yolo_kwargs
 
 _BEHAVIOR_ZH = {
     "browse_shelf": "浏览货架",
@@ -50,10 +50,12 @@ class DeepReID:
         import torch
         from torchvision import models, transforms
 
-        self._device = torch.device("cuda")
+        self._device = torch_device()
         net = models.mobilenet_v3_small(weights=models.MobileNet_V3_Small_Weights.DEFAULT)
         net.classifier = torch.nn.Identity()
-        net.eval().to(self._device).half()
+        net.eval().to(self._device)
+        if use_fp16():
+            net.half()
         self._embedder = (
             net,
             transforms.Compose([
@@ -76,10 +78,9 @@ class DeepReID:
             self._load_embedder()
         import torch
         net, tfm = self._embedder
+        dtype = torch.float16 if use_fp16() else torch.float32
         with torch.inference_mode():
-            t = tfm(cv2.cvtColor(crop, cv2.COLOR_BGR2RGB)).unsqueeze(0).to(
-                self._device, dtype=torch.float16
-            )
+            t = tfm(cv2.cvtColor(crop, cv2.COLOR_BGR2RGB)).unsqueeze(0).to(self._device, dtype=dtype)
             vec = net(t).float().cpu().numpy().flatten()
         norm = np.linalg.norm(vec) + 1e-6
         return (vec / norm).astype(np.float32)
@@ -177,8 +178,7 @@ class OpenVocabDetector:
         if self.model is not None or not ENABLE_OPEN_VOCAB:
             return
         try:
-            from ultralytics import YOLO
-            self.model = YOLO(OPEN_VOCAB_MODEL)
+            self.model = load_yolo_model(OPEN_VOCAB_MODEL)
             self.model.set_classes(OPEN_VOCAB_PROMPTS)
         except Exception as e:
             print(f"⚠️ 开放词汇模型未加载: {e}")
@@ -195,9 +195,7 @@ class OpenVocabDetector:
             return []
         self.last_run = now
         try:
-            res = self.model(
-                frame, verbose=False, conf=0.25, half=True, device=INFER_DEVICE
-            )[0]
+            res = self.model(frame, **yolo_kwargs(conf=0.25))[0]
             hits = []
             if res.boxes is not None:
                 for box, cls_id, conf in zip(
@@ -276,7 +274,7 @@ class SAMRefiner:
         try:
             x1, y1, x2, y2 = map(int, box)
             res = self.model(
-                frame, bboxes=[[x1, y1, x2, y2]], verbose=False, half=True, device=INFER_DEVICE
+                frame, bboxes=[[x1, y1, x2, y2]], **yolo_kwargs(),
             )[0]
             if res.masks is not None and len(res.masks.data):
                 return res.masks.data[0].cpu().numpy()

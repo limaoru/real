@@ -1,0 +1,33 @@
+{
+  "store": "我的店铺",
+  "area_sqm": 120,
+  "grid": [
+    24,
+    16
+  ],
+  "hotspots": [
+    {
+      "x": 11,
+      "y": 4,
+      "heat": 7.33
+    },
+    {
+      "x": 3,
+      "y": 7,
+      "heat": 8.28
+    },
+    {
+      "x": 4,
+      "y": 7,
+      "heat": 7.28
+    }
+  ],
+  "updated": "2026-06-18T12:59:50",
+  "simulation": {
+    "scenario": "checkout_relocate",
+    "shift_cols": 3,
+    "peak_before": 8.275484085083008,
+    "peak_after": 8.275484085083008,
+    "hint": "右移收银台可能缓解入口侧堆积"
+  }
+}

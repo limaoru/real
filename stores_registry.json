@@ -1,0 +1,11 @@
+{
+  "chain_id": "chain_001",
+  "stores": [
+    {
+      "store_id": "store_001",
+      "name": "我的店铺",
+      "role": "primary",
+      "dashboard_port": 5050
+    }
+  ]
+}

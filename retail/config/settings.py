@@ -80,7 +80,7 @@ ENABLE_AUDIO_ANALYSIS = False
 ENABLE_DEEP_REID = True
 DEEP_REID_THRESHOLD = 0.62
 ENABLE_BEHAVIOR_RECOGNITION = True
-ENABLE_OPEN_VOCAB = True
+ENABLE_OPEN_VOCAB = False
 OPEN_VOCAB_MODEL = "yolov8s-worldv2.pt"
 OPEN_VOCAB_PROMPTS = ["empty shelf", "product on shelf", "shopping bag", "bottle"]
 OPEN_VOCAB_INTERVAL = 60
@@ -118,16 +118,31 @@ ENABLE_ACTIVE_LEARNING = True
 ACTIVE_LEARNING_MIN_CONF = 0.45
 
 # ---------- 工程优化 ----------
+# YOLO 推理 letterbox 边长：320 更快，480 折中（与 MODEL_SIZE 档位独立）
+INFER_IMGSZ = 480
 ENABLE_ANALYSIS_DOWNSCALE = True
-ANALYSIS_SCALE = 0.72
+# 1280 宽摄像头：0.5→640×360 输入，比 0.375 更易检出远处/小人
+ANALYSIS_SCALE = 0.5
 ENABLE_PARALLEL_INFERENCE = True
-POSE_EVERY_N_FRAMES = 1
+INFER_MP_QUEUE_DEPTH = 1
+CAPTURE_QUEUE_DEPTH = 4
+POSE_EVERY_N_FRAMES = 2
+# 1=每帧 seg（最灵敏最慢）；2=折中；3=省算力
+SEG_EVERY_N_FRAMES = 2
 INFER_DEVICE = 0
+
+# 推理后端：cuda | cpu | openvino
+INFER_BACKEND = "openvino"
+# OpenVINO IR 目录见 retail/paths.py → openvino_models/
+# 无 IR 时是否自动从 .pt 导出（首次较慢，需 pip install retail-analytics[openvino]）
+OPENVINO_AUTO_EXPORT = True
 
 # 轮廓/骨架平滑（减轻闪烁）
 OVERLAY_SMOOTH_ALPHA = 0.55
 SKELETON_HOLD_FRAMES = 4
-SEG_CONF_MIN = 0.38
+# 人体检测置信度：越低越灵敏（误检也会增多），建议 0.22~0.32
+SEG_CONF_MIN = 0.25
+SEG_IOU = 0.4
 
 # ---------- 远程观看（PC 算力 + Mac/Tailscale 浏览器）----------
 ENABLE_HEADLESS = True
@@ -139,4 +154,4 @@ DASHBOARD_HOST = "0.0.0.0"
 DASHBOARD_PORT = 5050
 
 # 模型
-MODEL_SIZE = "l"
+MODEL_SIZE = "s"

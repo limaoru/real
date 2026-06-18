@@ -1,0 +1,19 @@
+{
+  "chain_id": "chain_001",
+  "updated": "2026-06-18T12:59:50",
+  "stores": [
+    {
+      "store_id": "store_001",
+      "name": "我的店铺",
+      "persons": 2,
+      "conversion_pct": 10.6,
+      "funnel": {
+        "浏览": 1054,
+        "完整动线": 0,
+        "入口": 321,
+        "收银": 34
+      },
+      "falls": 0
+    }
+  ]
+}

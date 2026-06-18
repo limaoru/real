@@ -1,0 +1,362 @@
+[
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122151__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:21:52"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122153__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:21:54"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122150__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:21:51"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122100__跨区顾客__跨摄像头识别_1人.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[跨区顾客] 跨摄像头识别 1人",
+    "ts": "2026-06-18T12:21:00"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122156__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:21:57"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122152__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:21:53"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122158__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:21:59"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122322__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:23:23"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122154__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:21:55"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122202__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:03"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122320__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:23:21"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122206__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:07"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122319__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:23:19"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122157__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:21:58"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122315__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:23:16"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122312__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:23:13"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122317__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:23:17"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122309__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:23:10"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122209__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:11"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122314__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:23:14"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122200__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:01"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122306__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:23:07"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122311__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:23:11"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122303__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:23:04"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122214__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:15"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122308__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:23:08"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122204__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:05"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122259__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:23:00"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122218__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:20"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122304__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:23:05"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122256__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:57"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122223__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:25"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122301__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:23:02"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122258__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:59"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122208__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:09"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122253__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:54"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122249__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:50"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122229__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:30"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122254__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:55"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122212__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:13"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122245__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:47"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122241__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:43"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122237__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:39"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122233__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:35"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122251__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:52"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122247__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:49"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122216__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:18"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122244__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:45"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122240__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:41"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122235__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:37"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122231__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:32"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122226__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:28"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122221__可疑停留__可疑行为_1起.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[可疑停留] 可疑行为 1起",
+    "ts": "2026-06-18T12:22:23"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122124__跨区顾客__跨摄像头识别_1人.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[跨区顾客] 跨摄像头识别 1人",
+    "ts": "2026-06-18T12:21:24"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122119__跨区顾客__跨摄像头识别_1人.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[跨区顾客] 跨摄像头识别 1人",
+    "ts": "2026-06-18T12:21:19"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122120__快速移动__快速移动_1人.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[快速移动] 快速移动 1人",
+    "ts": "2026-06-18T12:21:21"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_104_Specialty_20260618_122113__跨区顾客__跨摄像头识别_1人.mp4",
+    "cam": "Cam_104_Specialty",
+    "message": "[跨区顾客] 跨摄像头识别 1人",
+    "ts": "2026-06-18T12:21:13"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122106__转化率低__转化率仅11__优化动线.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[转化率低] 转化率仅11% 优化动线",
+    "ts": "2026-06-18T12:21:06"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122103__跨区顾客__跨摄像头识别_1人.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[跨区顾客] 跨摄像头识别 1人",
+    "ts": "2026-06-18T12:21:03"
+  },
+  {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122101__跨区顾客__跨摄像头识别_1人.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[跨区顾客] 跨摄像头识别 1人",
+    "ts": "2026-06-18T12:21:01"
+  }
+]

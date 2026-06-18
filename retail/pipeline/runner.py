@@ -1,17 +1,17 @@
 """零售视觉分析主流水线。"""
 from __future__ import annotations
 
+import multiprocessing as mp
 import os
 
 os.environ.setdefault("OPENCV_FFMPEG_CAPTURE_OPTIONS", "rtsp_transport;tcp")
 
 import time
 from datetime import datetime
+from queue import Empty
 
 import cv2
 import numpy as np
-import torch
-from ultralytics import YOLO
 
 from retail.analytics.brain import StoreBrain
 from retail.analytics.cam import CameraAnalytics
@@ -23,7 +23,6 @@ from retail.config.models import (
     POSE_MODEL,
     POSE_ZH,
     SEG_MODEL,
-    TARGET_CLASSES,
 )
 from retail.config.settings import (
     ANALYSIS_SCALE,
@@ -38,6 +37,7 @@ from retail.config.settings import (
     ENABLE_LIVE_STREAM,
     ENABLE_OCR_SHELF,
     ENABLE_OPEN_VOCAB,
+    ENABLE_PARALLEL_INFERENCE,
     ENABLE_QUEUE_DETECT,
     ENABLE_SKIN_DETECT,
     ENABLE_STAFF_EXCLUDE_COUNT,
@@ -45,14 +45,15 @@ from retail.config.settings import (
     ENABLE_WEB_DASHBOARD,
     GROUP_DISTANCE,
     HEATMAP_DECAY,
-    INFER_DEVICE,
     MODEL_SIZE,
     POSE_EVERY_N_FRAMES,
     QUEUE_MIN_PEOPLE,
     SEG_CONF_MIN,
+    SEG_EVERY_N_FRAMES,
     SKIN_MIN_RATIO,
     STORE_NAME,
     WEB_EXPORT_INTERVAL,
+    CAPTURE_QUEUE_DEPTH,
 )
 from retail.data.export import export_live_state
 from retail.data.report import generate_daily_report
@@ -72,26 +73,61 @@ from retail.vision.contours import draw_person_contour
 from retail.vision.overlay_smooth import OverlaySmoothCache
 from retail.vision.pose import classify_pose, draw_skeleton
 from retail.vision.skin import detect_and_draw_skin
+from retail.pipeline.infer_ipc import InferResult
+from retail.pipeline.infer_pool import CameraInferPool
+from retail.vision.capture_process import RTSPCaptureProcess
+from retail.vision.infer_backend import infer_profile, load_yolo_model, track_kwargs, yolo_kwargs
+from retail.vision.seg_track import ByteTrackSegRunner
 from retail.vision.stream import RTSPStreamReader
 
 load_zone_config()
 
 
+def _drain_thread_reader(reader: RTSPStreamReader) -> np.ndarray | None:
+    latest: np.ndarray | None = None
+    if reader.frame_queue.empty():
+        return None
+    latest = reader.frame_queue.get()
+    while reader.frame_queue.qsize() > 0:
+        try:
+            latest = reader.frame_queue.get_nowait()
+        except Empty:
+            break
+    return latest
+
+
 def run():
-    if not torch.cuda.is_available():
-        print("❌ 未检测到可用的 NVIDIA CUDA 环境！")
-        return
-    
-    print(f"🔥 {STORE_NAME} 零售视界全功能启动！模型: {MODEL_SIZE} | 分割: {SEG_MODEL} | 姿态: {POSE_MODEL} | FP16")
+    profile = infer_profile()
+    print(
+        f"🔥 {STORE_NAME} 零售视界启动！模型: {MODEL_SIZE} | 分割: {SEG_MODEL} | 姿态: {POSE_MODEL} | {profile.label}"
+    )
     print("📐 区域标定: python -m retail zones  |  📊 仪表盘: python -m retail dashboard")
     if ENABLE_HEADLESS:
         print("🖥️  无头模式：不在本机弹窗，请浏览器打开仪表盘查看实时画面")
     if ENABLE_LIVE_STREAM:
         print(f"📺 实时 MJPEG: http://<本机或Tailscale IP>:5050/live/<摄像头名>")
     cam_names = list(CAMERA_CONFIGS.keys())
-    print(f"📦 加载 {len(cam_names)} 路独立跟踪模型（每摄像头 persist 隔离）…")
-    seg_models = {name: YOLO(SEG_MODEL) for name in cam_names}
-    pose_models = {name: YOLO(POSE_MODEL) for name in cam_names}
+    mp_ctx = mp.get_context("spawn")
+    infer_pool: CameraInferPool | None = None
+    seg_runners: dict | None = None
+    pose_models: dict | None = None
+    pose_kw = None
+
+    if ENABLE_PARALLEL_INFERENCE:
+        print(f"⚡ 异步流水线: 采集/推理 multiprocessing | Seg 每 {SEG_EVERY_N_FRAMES} 帧 + ByteTrack 插值")
+        infer_pool = CameraInferPool(cam_names, mp_ctx)
+        infer_pool.start()
+    else:
+        print(f"📦 加载 {len(cam_names)} 路独立跟踪模型（同步模式）…")
+        print(f"⚡ Seg 每 {SEG_EVERY_N_FRAMES} 帧 + ByteTrack 插值 | Pose 每 {POSE_EVERY_N_FRAMES} 帧")
+        track_kw = track_kwargs()
+        seg_runners = {
+            name: ByteTrackSegRunner(load_yolo_model(SEG_MODEL), track_kw, every_n=SEG_EVERY_N_FRAMES)
+            for name in cam_names
+        }
+        pose_models = {name: load_yolo_model(POSE_MODEL) for name in cam_names}
+        pose_kw = yolo_kwargs(conf=0.4)
+
     model_label = f"11{MODEL_SIZE}"
     brain = StoreBrain()
     vision_hub = VisionAdvancedHub()
@@ -114,11 +150,22 @@ def run():
         if not ENABLE_HEADLESS:
             cv2.namedWindow(f"Store Analytics Platform - {cam_name}", cv2.WINDOW_NORMAL)
             cv2.namedWindow(f"Heatmap - {cam_name}", cv2.WINDOW_NORMAL)
-        reader = RTSPStreamReader(cam_name, config["rtsp"], config["width"], config["height"])
-        reader.daemon = True
+        reader = (
+            RTSPCaptureProcess(
+                cam_name,
+                config["rtsp"],
+                config["width"],
+                config["height"],
+                ctx=mp_ctx,
+                queue_depth=CAPTURE_QUEUE_DEPTH,
+            )
+            if ENABLE_PARALLEL_INFERENCE
+            else RTSPStreamReader(cam_name, config["rtsp"], config["width"], config["height"])
+        )
+        if not ENABLE_PARALLEL_INFERENCE:
+            reader.daemon = True
         reader.start()
         readers[cam_name] = reader
-        
         heatmaps[cam_name] = np.zeros((config["height"], config["width"]), dtype=np.float32)
         customer_counts[cam_name] = 0
         counted_ids[cam_name] = set()
@@ -134,6 +181,12 @@ def run():
     brain_summaries = {}
     gid_labels = {}
     last_report_date = None
+    latest_frames: dict[str, np.ndarray] = {}
+    latest_infer: dict = {}
+    frame_by_seq: dict[str, dict[int, np.ndarray]] = {c: {} for c in cam_names}
+    last_composed_seq: dict[str, int] = {}
+    last_overlay: dict[str, np.ndarray] = {}
+    last_heatmap_panel: dict[str, np.ndarray] = {}
 
     def push_alert_hook(analytics, msg):
         analytics.push_alert(msg)
@@ -146,31 +199,25 @@ def run():
                 fps = fps_state.get(analytics.cam_name, {}).get("fps", 10) or 10
                 rec.trigger(msg, fps=fps)
 
-    with torch.inference_mode():
+    try:
         while True:
-            pending_frames = []
-            for cam_name, reader in readers.items():
-                if reader.frame_queue.empty():
-                    continue
-                pending_frames.append((cam_name, reader.frame_queue.get()))
-                while reader.frame_queue.qsize() > 0:
-                    try:
-                        pending_frames[-1] = (cam_name, reader.frame_queue.get_nowait())
-                    except Empty:
-                        break
+            pending_sync: list[tuple] = []
 
-            for cam_name, frame in pending_frames:
-                reader = readers[cam_name]
-                t0 = time.perf_counter()
+            for cam_name, reader in readers.items():
+                if ENABLE_PARALLEL_INFERENCE:
+                    frame = reader.read_latest()
+                else:
+                    frame = _drain_thread_reader(reader)
+                if frame is None:
+                    continue
+
+                latest_frames[cam_name] = frame
                 frame_counters[cam_name] += 1
                 if ENABLE_EVENT_CLIPS:
                     clip_recorders[cam_name].push_frame(frame)
-                analytics = cam_analytics[cam_name]
-                accum_heatmap = heatmaps[cam_name]
+
                 frame_w = reader.width
                 frame_h = reader.height
-                accum_heatmap *= HEATMAP_DECAY
-
                 infer_frame = frame
                 inv_scale = 1.0
                 if ENABLE_ANALYSIS_DOWNSCALE and ANALYSIS_SCALE < 1.0:
@@ -179,30 +226,111 @@ def run():
                         frame, (int(frame_w * inv_scale), int(frame_h * inv_scale))
                     )
 
+                run_pose = frame_counters[cam_name] % max(1, POSE_EVERY_N_FRAMES) == 0
+                seq = frame_counters[cam_name]
+                if infer_pool is not None:
+                    frame_by_seq[cam_name][seq] = frame.copy()
+                    for old_seq in list(frame_by_seq[cam_name]):
+                        if old_seq < seq - 8:
+                            del frame_by_seq[cam_name][old_seq]
+                    infer_pool.submit(
+                        cam_name,
+                        seq,
+                        infer_frame,
+                        inv_scale,
+                        run_pose,
+                    )
+                else:
+                    pending_sync.append((cam_name, frame, infer_frame, inv_scale, run_pose))
+
+            if infer_pool is not None:
+                latest_infer.update(infer_pool.poll_all())
+
+            compose_jobs: list[tuple] = []
+            if infer_pool is not None:
+                for cam_name in cam_names:
+                    result = latest_infer.get(cam_name)
+                    if result is None:
+                        continue
+                    if last_composed_seq.get(cam_name) == result.seq:
+                        continue
+                    frame_src = frame_by_seq[cam_name].get(result.seq)
+                    if frame_src is None:
+                        lf = latest_frames.get(cam_name)
+                        if lf is None:
+                            continue
+                        frame_src = lf
+                    compose_jobs.append((cam_name, frame_src.copy(), result))
+                    last_composed_seq[cam_name] = result.seq
+            else:
+                import torch
+
+                with torch.inference_mode():
+                    for cam_name, frame, infer_frame, inv_scale, run_pose in pending_sync:
+                        track_frame = seg_runners[cam_name].run(infer_frame)
+                        kps_xy_np = None
+                        kps_conf_np = None
+                        has_person = track_frame.clss is not None and np.any(track_frame.clss == 0)
+                        if run_pose and has_person:
+                            pose_results = pose_models[cam_name](infer_frame, **pose_kw)[0]
+                            if pose_results.keypoints is not None:
+                                kps_xy = pose_results.keypoints.xy
+                                kps_conf = pose_results.keypoints.conf
+                                kps_xy_np = (
+                                    kps_xy.cpu().numpy()
+                                    if hasattr(kps_xy, "cpu")
+                                    else np.asarray(kps_xy)
+                                )
+                                kps_conf_np = (
+                                    kps_conf.cpu().numpy()
+                                    if kps_conf is not None and hasattr(kps_conf, "cpu")
+                                    else (np.asarray(kps_conf) if kps_conf is not None else None)
+                                )
+                        compose_jobs.append(
+                            (
+                                cam_name,
+                                frame.copy(),
+                                InferResult(
+                                    cam_name=cam_name,
+                                    seq=frame_counters[cam_name],
+                                    inv_scale=inv_scale,
+                                    track_frame=track_frame,
+                                    kps_xy_np=kps_xy_np,
+                                    kps_conf_np=kps_conf_np,
+                                    infer_ms=0.0,
+                                ),
+                            )
+                        )
+
+            for cam_name, frame, infer_out in compose_jobs:
+                reader = readers[cam_name]
+                t0 = time.perf_counter()
+                analytics = cam_analytics[cam_name]
+                accum_heatmap = heatmaps[cam_name]
+                frame_w = reader.width
+                frame_h = reader.height
+                accum_heatmap *= HEATMAP_DECAY
+
+                inv_scale = infer_out.inv_scale
+                track_frame = infer_out.track_frame
+                boxes = track_frame.boxes
+                clss = track_frame.clss
+                track_ids = track_frame.track_ids
+                masks_xy = track_frame.masks_xy
+
                 current_metrics = {name: 0 for name, _ in CLASS_MAPPING.values()}
                 current_metrics.update({"standing": 0, "sitting": 0, "lying": 0, "groups": 0, "queue": 0, "bags": 0})
                 person_centers = []
                 person_boxes = {}
                 object_boxes = []
 
-                results = seg_models[cam_name].track(
-                    source=infer_frame, persist=True, device=INFER_DEVICE, half=True, verbose=False,
-                    imgsz=INFER_IMGSZ, classes=TARGET_CLASSES, tracker="bytetrack.yaml",
-                    conf=SEG_CONF_MIN, iou=0.45,
-                )
-
                 pose_by_foot = {}
-                kps_list_for_blur = []
                 smooth_cache = overlay_caches[cam_name]
                 kps_list_for_blur = []
 
-                if results[0].boxes is not None:
-                    boxes = results[0].boxes.xyxy.cpu().numpy()
+                if boxes is not None:
                     if inv_scale != 1.0:
                         boxes = scale_boxes(boxes, inv_scale)
-                    clss = results[0].boxes.cls.cpu().numpy().astype(int)
-                    track_ids = results[0].boxes.id.cpu().numpy().astype(int) if results[0].boxes.id is not None else [None] * len(clss)
-                    masks_xy = results[0].masks.xy if results[0].masks is not None else None
 
                     for idx, (box, cls_id, track_id) in enumerate(zip(boxes, clss, track_ids)):
                         if cls_id not in CLASS_MAPPING:
@@ -214,10 +342,13 @@ def run():
                         id_str = f" ID:{track_id}" if track_id is not None else ""
 
                         if cls_id == 0:
-                            foot = (int((x1 + x2) / 2), int(y2))
-                            person_centers.append(foot)
                             if track_id is not None:
-                                person_boxes[track_id] = box
+                                sb = smooth_cache.smooth_box(cam_name, int(track_id), box)
+                                person_boxes[track_id] = sb
+                                foot = (int((sb[0] + sb[2]) / 2), int(sb[3]))
+                            else:
+                                foot = (int((x1 + x2) / 2), int(y2))
+                            person_centers.append(foot)
                             raw_mask = masks_xy[idx] if masks_xy is not None and idx < len(masks_xy) else None
                             mask_xy = None
                             if track_id is not None:
@@ -227,6 +358,14 @@ def run():
                                 mask_xy = raw_mask
                             label_pos = draw_person_contour(frame, mask_xy, color)
                             if label_pos is None:
+                                x1, y1, x2, y2 = person_boxes.get(track_id, box)
+                                cv2.rectangle(
+                                    frame,
+                                    (int(x1), int(y1)),
+                                    (int(x2), int(y2)),
+                                    color,
+                                    2,
+                                )
                                 label_pos = (int(x1), int(y1))
                             skin_ratio = 0.0
                             if ENABLE_SKIN_DETECT:
@@ -253,22 +392,12 @@ def run():
 
                 smooth_cache.prune_masks(cam_name, set(person_boxes.keys()))
 
-                run_pose = (frame_counters[cam_name] % max(1, POSE_EVERY_N_FRAMES) == 0)
-                if current_metrics["Person"] > 0 and run_pose:
-                    pose_results = pose_models[cam_name](
-                        infer_frame, verbose=False, device=INFER_DEVICE, half=True, conf=0.4,
-                        imgsz=INFER_IMGSZ,
-                    )[0]
-                    if pose_results.keypoints is not None:
-                        kps_xy = pose_results.keypoints.xy
-                        kps_conf = pose_results.keypoints.conf
-                        kps_xy_np = kps_xy.cpu().numpy() if hasattr(kps_xy, "cpu") else np.asarray(kps_xy)
-                        if inv_scale != 1.0:
-                            kps_xy_np = kps_xy_np / inv_scale
-                        kps_conf_np = kps_conf.cpu().numpy() if kps_conf is not None and hasattr(kps_conf, "cpu") else (
-                            np.asarray(kps_conf) if kps_conf is not None else None
-                        )
-                        smooth_cache.update_keypoints(cam_name, person_boxes, kps_xy_np, kps_conf_np)
+                kps_xy_np = infer_out.kps_xy_np
+                kps_conf_np = infer_out.kps_conf_np
+                if kps_xy_np is not None and inv_scale != 1.0:
+                    kps_xy_np = kps_xy_np / inv_scale
+                if kps_xy_np is not None and len(person_boxes) > 0:
+                    smooth_cache.update_keypoints(cam_name, person_boxes, kps_xy_np, kps_conf_np)
 
                 for tid, kp, kp_conf in smooth_cache.iter_track_keypoints(cam_name, set(person_boxes.keys())):
                     kps_list_for_blur.append(kp)
@@ -293,6 +422,7 @@ def run():
                         kp_conf.reshape(1, -1) if kp_conf is not None else None,
                         color=CLASS_MAPPING[0][1],
                         thickness=3,
+                        conf_thresh=0.25,
                     )
 
                 if ENABLE_FACE_BLUR and kps_list_for_blur:
@@ -377,13 +507,9 @@ def run():
                     if insight and brain.db:
                         brain.db.log_vlm_insight(insight)
 
-                conf_tensor = (
-                    results[0].boxes.conf
-                    if results[0].boxes is not None and results[0].boxes.conf is not None
-                    else None
-                )
-                if conf_tensor is not None and conf_tensor.numel() > 0:
-                    low_conf = float(conf_tensor.min().cpu().item())
+                conf_tensor = track_frame.conf
+                if conf_tensor is not None and len(conf_tensor) > 0:
+                    low_conf = float(np.min(conf_tensor))
                     active_learn.maybe_export(frame, cam_name, "low_conf", low_conf)
 
                 analytics.prune_stale_tracks()
@@ -439,6 +565,8 @@ def run():
                 metrics_by_cam[cam_name] = dict(current_metrics)
 
                 if ENABLE_LIVE_STREAM:
+                    last_overlay[cam_name] = overlay_frame
+                    last_heatmap_panel[cam_name] = heatmap_panel
                     FrameHub.publish(cam_name, overlay_frame)
                     FrameHub.publish(FrameHub.heatmap_key(cam_name), heatmap_panel)
 
@@ -459,7 +587,10 @@ def run():
                 }
                 export_live_state(
                     cam_analytics, customer_counts, fps_state, metrics_by_cam, brain, brain_summaries, extras,
-                    stream_online={name: r.online for name, r in readers.items()},
+                    stream_online={
+                        name: (r.is_online if ENABLE_PARALLEL_INFERENCE else r.online)
+                        for name, r in readers.items()
+                    },
                 )
                 last_web_export = now
 
@@ -475,13 +606,15 @@ def run():
 
             if not ENABLE_HEADLESS and cv2.waitKey(1) & 0xFF == ord("q"):
                 break
-            if ENABLE_HEADLESS:
-                time.sleep(0.001)
+            time.sleep(0.001 if ENABLE_PARALLEL_INFERENCE else (0.001 if ENABLE_HEADLESS else 0))
 
-    for reader in readers.values():
-        reader.stop()
-    if not ENABLE_HEADLESS:
-        cv2.destroyAllWindows()
+    finally:
+        if infer_pool is not None:
+            infer_pool.stop()
+        for reader in readers.values():
+            reader.stop()
+        if not ENABLE_HEADLESS:
+            cv2.destroyAllWindows()
 
 
 

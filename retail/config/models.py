@@ -1,6 +1,6 @@
 """YOLO 检测与姿态相关常量。"""
 
-from retail.config.settings import MODEL_SIZE
+from retail.config.settings import INFER_IMGSZ, MODEL_SIZE
 
 TARGET_CLASSES = [0, 24, 26, 28, 39, 41, 67]
 
@@ -32,7 +32,7 @@ MODEL_PRESETS = {
 _active = MODEL_PRESETS.get(MODEL_SIZE, MODEL_PRESETS["x"])
 SEG_MODEL = _active["seg"]
 POSE_MODEL = _active["pose"]
-INFER_IMGSZ = _active["imgsz"]
+# INFER_IMGSZ 由 settings.py 统一配置（不再随 MODEL_SIZE 档位自动升高）
 
 POSE_ZH = {"Standing": "站", "Sitting": "坐", "Lying": "躺", "Unknown": "未知"}
 BAG_CLASS_IDS = {24, 26, 28}

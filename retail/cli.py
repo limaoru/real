@@ -16,6 +16,7 @@ def main(argv: list[str] | None = None) -> int:
 
     sub.add_parser("run", help="启动双路 RTSP 分析主程序")
     sub.add_parser("dashboard", help=f"启动 Web 仪表盘 (端口 {DASHBOARD_PORT})")
+    sub.add_parser("export-openvino", help="导出 seg/pose 权重为 OpenVINO IR")
     zones = sub.add_parser("zones", help="区域/越线鼠标标定工具")
     zones.add_argument("camera", nargs="?", help="摄像头名称")
 
@@ -37,6 +38,13 @@ def main(argv: list[str] | None = None) -> int:
         from retail.apps.zone_editor import main as zones_main
 
         zones_main([args.camera] if args.camera else [])
+        return 0
+
+    if args.command == "export-openvino":
+        from retail.config.models import POSE_MODEL, SEG_MODEL
+        from retail.vision.infer_backend import export_all_openvino
+
+        export_all_openvino(SEG_MODEL, POSE_MODEL)
         return 0
 
     parser.print_help()

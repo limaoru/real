@@ -8,8 +8,8 @@ version = "2.0.0"
 description = "零售店铺视觉智能分析（YOLO + BI 仪表盘）"
 requires-python = ">=3.10"
 dependencies = [
-    "numpy",
-    "opencv-python",
+    "numpy>=1.26,<2",
+    "opencv-python>=4.8,<4.10",
     "pillow",
     "torch",
     "ultralytics",
@@ -18,7 +18,8 @@ dependencies = [
 [project.optional-dependencies]
 ocr = ["easyocr"]
 forecast = ["scikit-learn"]
-all = ["easyocr", "scikit-learn"]
+openvino = ["openvino>=2024.0.0"]
+all = ["easyocr", "scikit-learn", "openvino>=2024.0.0"]
 
 [project.scripts]
 retail = "retail.cli:main"
