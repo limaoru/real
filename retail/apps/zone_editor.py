@@ -14,7 +14,7 @@
   R          - 从 JSON 重新加载
   Q / ESC    - 退出
 
-运行：python3 zone_editor.py [摄像头名称]
+运行：python -m retail zones [摄像头名称]
 """
 import os
 import sys

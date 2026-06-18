@@ -82,7 +82,7 @@ def run():
         print("❌ 未检测到可用的 NVIDIA CUDA 环境！")
         return
     
-    print(f"🔥 {STORE_NAME} 零售视界全功能启动！模型: {MODEL_SIZE} | 分割: {SEG_MODEL} | 姿态: {POSE_MODEL}")
+    print(f"🔥 {STORE_NAME} 零售视界全功能启动！模型: {MODEL_SIZE} | 分割: {SEG_MODEL} | 姿态: {POSE_MODEL} | FP16")
     print("📐 区域标定: python -m retail zones  |  📊 仪表盘: python -m retail dashboard")
     if ENABLE_HEADLESS:
         print("🖥️  无头模式：不在本机弹窗，请浏览器打开仪表盘查看实时画面")
@@ -178,8 +178,9 @@ def run():
                 object_boxes = []
 
                 results = model.track(
-                    source=infer_frame, persist=True, device=INFER_DEVICE, verbose=False, imgsz=INFER_IMGSZ,
-                    classes=TARGET_CLASSES, tracker="bytetrack.yaml", conf=SEG_CONF_MIN, iou=0.45
+                    source=infer_frame, persist=True, device=INFER_DEVICE, half=True, verbose=False,
+                    imgsz=INFER_IMGSZ, classes=TARGET_CLASSES, tracker="bytetrack.yaml",
+                    conf=SEG_CONF_MIN, iou=0.45,
                 )
 
                 pose_by_foot = {}
@@ -247,7 +248,8 @@ def run():
                 run_pose = (frame_counters[cam_name] % max(1, POSE_EVERY_N_FRAMES) == 0)
                 if current_metrics["Person"] > 0 and run_pose:
                     pose_results = pose_model(
-                        infer_frame, verbose=False, device=INFER_DEVICE, conf=0.4, imgsz=INFER_IMGSZ
+                        infer_frame, verbose=False, device=INFER_DEVICE, half=True, conf=0.4,
+                        imgsz=INFER_IMGSZ,
                     )[0]
                     if pose_results.keypoints is not None:
                         kps_xy = pose_results.keypoints.xy

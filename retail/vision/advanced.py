@@ -15,6 +15,7 @@ from retail.config.settings import (
     ENABLE_OPEN_VOCAB,
     ENABLE_SAM_REFINE,
     FACE_BLUR_STRENGTH,
+    INFER_DEVICE,
     OCR_INTERVAL_SEC,
     OPEN_VOCAB_INTERVAL,
     OPEN_VOCAB_MODEL,
@@ -41,30 +42,27 @@ class DeepReID:
         self.track_map: dict[tuple, int] = {}
         self.gallery: deque = deque(maxlen=300)
         self._embedder = None
-        self._device = "cpu"
+        self._device = None
 
     def _load_embedder(self):
         if self._embedder is not None:
             return
-        try:
-            import torch
-            from torchvision import models, transforms
+        import torch
+        from torchvision import models, transforms
 
-            self._device = "cuda" if torch.cuda.is_available() else "cpu"
-            net = models.mobilenet_v3_small(weights=models.MobileNet_V3_Small_Weights.DEFAULT)
-            net.classifier = torch.nn.Identity()
-            net.eval().to(self._device)
-            self._embedder = (
-                net,
-                transforms.Compose([
-                    transforms.ToPILImage(),
-                    transforms.Resize((128, 64)),
-                    transforms.ToTensor(),
-                    transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
-                ]),
-            )
-        except Exception:
-            self._embedder = "hist"
+        self._device = torch.device("cuda")
+        net = models.mobilenet_v3_small(weights=models.MobileNet_V3_Small_Weights.DEFAULT)
+        net.classifier = torch.nn.Identity()
+        net.eval().to(self._device).half()
+        self._embedder = (
+            net,
+            transforms.Compose([
+                transforms.ToPILImage(),
+                transforms.Resize((128, 64)),
+                transforms.ToTensor(),
+                transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+            ]),
+        )
 
     def _embed(self, frame, box) -> Optional[np.ndarray]:
         x1, y1, x2, y2 = map(int, box)
@@ -76,16 +74,13 @@ class DeepReID:
         crop = frame[y1:y2, x1:x2]
         if self._embedder is None:
             self._load_embedder()
-        if self._embedder == "hist":
-            small = cv2.resize(crop, (48, 96))
-            hist = cv2.calcHist([small], [0, 1, 2], None, [8, 8, 8], [0, 256, 0, 256, 0, 256])
-            cv2.normalize(hist, hist)
-            return hist.flatten().astype(np.float32)
         import torch
         net, tfm = self._embedder
         with torch.inference_mode():
-            t = tfm(cv2.cvtColor(crop, cv2.COLOR_BGR2RGB)).unsqueeze(0).to(self._device)
-            vec = net(t).cpu().numpy().flatten()
+            t = tfm(cv2.cvtColor(crop, cv2.COLOR_BGR2RGB)).unsqueeze(0).to(
+                self._device, dtype=torch.float16
+            )
+            vec = net(t).float().cpu().numpy().flatten()
         norm = np.linalg.norm(vec) + 1e-6
         return (vec / norm).astype(np.float32)
 
@@ -93,9 +88,7 @@ class DeepReID:
     def _sim(a: np.ndarray, b: np.ndarray) -> float:
         if a.shape != b.shape:
             return 0.0
-        if len(a) > 200:
-            return float(np.dot(a, b))
-        return float(cv2.compareHist(a.reshape(-1, 1), b.reshape(-1, 1), cv2.HISTCMP_CORREL))
+        return float(np.dot(a, b))
 
     def assign(self, cam: str, track_id: int, frame, box) -> Optional[int]:
         key = (cam, track_id)
@@ -202,7 +195,9 @@ class OpenVocabDetector:
             return []
         self.last_run = now
         try:
-            res = self.model(frame, verbose=False, conf=0.25)[0]
+            res = self.model(
+                frame, verbose=False, conf=0.25, half=True, device=INFER_DEVICE
+            )[0]
             hits = []
             if res.boxes is not None:
                 for box, cls_id, conf in zip(
@@ -280,7 +275,9 @@ class SAMRefiner:
             return None
         try:
             x1, y1, x2, y2 = map(int, box)
-            res = self.model(frame, bboxes=[[x1, y1, x2, y2]], verbose=False)[0]
+            res = self.model(
+                frame, bboxes=[[x1, y1, x2, y2]], verbose=False, half=True, device=INFER_DEVICE
+            )[0]
             if res.masks is not None and len(res.masks.data):
                 return res.masks.data[0].cpu().numpy()
         except Exception:

@@ -93,3 +93,4 @@ def draw_fps_hud(frame: np.ndarray, fps: float, model_label: str) -> None:
     cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 0, 0), -1)
     cv2.putText(frame, fps_text, (x1 + 12, y1 + fps_size[1] + 8), font, 0.8, (0, 255, 0), 2)
     cv2.putText(frame, model_text, (x1 + 12, y2 - 10), font, 0.55, (200, 200, 200), 1)
+    

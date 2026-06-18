@@ -188,7 +188,3 @@ class CameraAnalytics:
         snap_dir.mkdir(parents=True, exist_ok=True)
         path = snap_dir / f"{self.cam_name}_{datetime.now():%Y%m%d_%H%M%S}.jpg"
         cv2.imwrite(str(path), heatmap_panel)
-
-
-# 向后兼容旧名称
-StoreCamAnalytics = CameraAnalytics

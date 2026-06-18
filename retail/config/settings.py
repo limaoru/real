@@ -8,7 +8,7 @@ STORE_ID = "store_001"
 STORE_AREA_SQM = 120
 STORE_CHAIN_ID = "chain_001"
 
-# ---------- 视觉检测基础（78.py）----------
+# ---------- 视觉检测基础 ----------
 ENABLE_SKIN_DETECT = True
 SKIN_OVERLAY_ALPHA = 0.22
 SKIN_MIN_RATIO = 0.08
@@ -32,7 +32,7 @@ TRAIL_LENGTH = 40
 HEATMAP_DECAY = 0.998
 LOG_INTERVAL_SEC = 30
 
-# ---------- 智能分析（analytics_plus）----------
+# ---------- 智能分析 ----------
 ENABLE_FUNNEL = True
 ENABLE_DWELL_TIERS = True
 DWELL_TIER_BROWSE = 3
