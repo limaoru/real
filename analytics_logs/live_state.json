@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-18T12:59:50",
+  "updated": "2026-06-18T13:22:55",
   "cameras": {
     "Cam_231_Counter": {
-      "customers_total": 0,
+      "customers_total": 1,
       "line_in": 0,
       "line_out": 0,
       "peak": 4,
@@ -14,370 +14,118 @@
       "persons": 0,
       "zone_current": {},
       "zone_enter_total": {},
-      "hourly": {},
+      "hourly": {
+        "13:00": 1
+      },
       "alerts": [
-        "[12:58:53] [转化率低] 转化率仅11% 优化动线"
+        "[13:22:19] 排队告警 3人",
+        "[13:21:39] [跨区顾客] 跨摄像头识别 1人"
       ],
       "fps": 4.5,
       "stream_online": true,
       "plus": {
         "funnel": {
-          "浏览": 1052,
-          "完整动线": 0,
-          "入口": 321,
-          "收银": 34
+          "浏览": 4,
+          "完整动线": 0
         },
         "dwell_tiers": {
-          "浏览": 3,
+          "浏览": 4,
           "兴趣": 0,
           "意向": 0
         },
         "density": 0.0,
-        "forecast_next_hour": 0,
+        "forecast_next_hour": 1,
         "staff_count": 0,
         "suspicious": 0,
-        "cross_cam": [
-          {
-            "gid": 1,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 1262,
-            "last_ts": "2026-06-18T12:59:39"
-          },
-          {
-            "gid": 2,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 175,
-            "last_ts": "2026-06-18T12:59:39"
-          },
-          {
-            "gid": 3,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 33,
-            "last_ts": "2026-06-18T12:59:16"
-          },
-          {
-            "gid": 5,
-            "first": "Cam_231_Counter",
-            "last": "Cam_104_Specialty",
-            "visits": 7,
-            "last_ts": "2026-06-18T12:56:36"
-          },
-          {
-            "gid": 6,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_231_Counter",
-            "visits": 49,
-            "last_ts": "2026-06-18T12:56:23"
-          },
-          {
-            "gid": 4,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 31,
-            "last_ts": "2026-06-18T12:56:15"
-          },
-          {
-            "gid": 15,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 62,
-            "last_ts": "2026-06-18T12:31:40"
-          },
-          {
-            "gid": 18,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 2,
-            "last_ts": "2026-06-18T12:30:42"
-          },
-          {
-            "gid": 17,
-            "first": "Cam_231_Counter",
-            "last": "Cam_231_Counter",
-            "visits": 1,
-            "last_ts": "2026-06-18T12:29:28"
-          },
-          {
-            "gid": 16,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 3,
-            "last_ts": "2026-06-18T12:29:14"
-          },
-          {
-            "gid": 13,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 4,
-            "last_ts": "2026-06-18T12:28:51"
-          },
-          {
-            "gid": 14,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 10,
-            "last_ts": "2026-06-18T12:28:37"
-          },
-          {
-            "gid": 7,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_231_Counter",
-            "visits": 13,
-            "last_ts": "2026-06-18T12:28:05"
-          },
-          {
-            "gid": 10,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 63,
-            "last_ts": "2026-06-18T12:28:01"
-          },
-          {
-            "gid": 12,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 3,
-            "last_ts": "2026-06-18T12:27:32"
-          },
-          {
-            "gid": 11,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 4,
-            "last_ts": "2026-06-18T12:26:49"
-          },
-          {
-            "gid": 9,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 10,
-            "last_ts": "2026-06-18T12:23:47"
-          },
-          {
-            "gid": 8,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 2,
-            "last_ts": "2026-06-18T12:23:01"
-          }
-        ],
-        "conversion_pct": 10.6,
+        "cross_cam": [],
+        "conversion_pct": 0.0,
         "family_groups": 0,
         "falls": 0,
         "zigzag": 0,
         "shelf_engagement": 0,
         "behaviors": {
-          "browse_shelf": 18
+          "browse_shelf": 7,
+          "walk_fast": 1,
+          "put_back": 1
         },
         "attribution": [],
-        "forecast_rest_day": 0
+        "forecast_rest_day": 7
       }
     },
     "Cam_104_Specialty": {
-      "customers_total": 3,
+      "customers_total": 4,
       "line_in": 0,
       "line_out": 0,
       "peak": 3,
       "standing": 0,
-      "sitting": 1,
+      "sitting": 0,
       "groups": 0,
       "queue": 0,
       "bags": 0,
-      "persons": 2,
-      "zone_current": {
-        "货架区": 2
-      },
+      "persons": 0,
+      "zone_current": {},
       "zone_enter_total": {
-        "货架区": 6
+        "体验区": 2,
+        "货架区": 3
       },
       "hourly": {
-        "12:00": 3
+        "13:00": 4
       },
       "alerts": [
-        "[12:59:46] [可疑停留] 可疑行为 2起"
+        "[13:21:40] [跨区顾客] 跨摄像头识别 1人"
       ],
-      "fps": 4.6,
+      "fps": 4.3,
       "stream_online": true,
       "plus": {
         "funnel": {
-          "浏览": 1054,
-          "完整动线": 0,
-          "入口": 321,
-          "收银": 34
+          "浏览": 4,
+          "完整动线": 0
         },
         "dwell_tiers": {
-          "浏览": 3,
+          "浏览": 4,
           "兴趣": 0,
           "意向": 0
         },
-        "density": 0.017,
-        "forecast_next_hour": 3,
+        "density": 0.0,
+        "forecast_next_hour": 4,
         "staff_count": 0,
-        "suspicious": 2,
-        "cross_cam": [
-          {
-            "gid": 1,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 1263,
-            "last_ts": "2026-06-18T12:59:46"
-          },
-          {
-            "gid": 3,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 34,
-            "last_ts": "2026-06-18T12:59:46"
-          },
-          {
-            "gid": 2,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 175,
-            "last_ts": "2026-06-18T12:59:39"
-          },
-          {
-            "gid": 5,
-            "first": "Cam_231_Counter",
-            "last": "Cam_104_Specialty",
-            "visits": 7,
-            "last_ts": "2026-06-18T12:56:36"
-          },
-          {
-            "gid": 6,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_231_Counter",
-            "visits": 49,
-            "last_ts": "2026-06-18T12:56:23"
-          },
-          {
-            "gid": 4,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 31,
-            "last_ts": "2026-06-18T12:56:15"
-          },
-          {
-            "gid": 15,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 62,
-            "last_ts": "2026-06-18T12:31:40"
-          },
-          {
-            "gid": 18,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 2,
-            "last_ts": "2026-06-18T12:30:42"
-          },
-          {
-            "gid": 17,
-            "first": "Cam_231_Counter",
-            "last": "Cam_231_Counter",
-            "visits": 1,
-            "last_ts": "2026-06-18T12:29:28"
-          },
-          {
-            "gid": 16,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 3,
-            "last_ts": "2026-06-18T12:29:14"
-          },
-          {
-            "gid": 13,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 4,
-            "last_ts": "2026-06-18T12:28:51"
-          },
-          {
-            "gid": 14,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 10,
-            "last_ts": "2026-06-18T12:28:37"
-          },
-          {
-            "gid": 7,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_231_Counter",
-            "visits": 13,
-            "last_ts": "2026-06-18T12:28:05"
-          },
-          {
-            "gid": 10,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 63,
-            "last_ts": "2026-06-18T12:28:01"
-          },
-          {
-            "gid": 12,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 3,
-            "last_ts": "2026-06-18T12:27:32"
-          },
-          {
-            "gid": 11,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 4,
-            "last_ts": "2026-06-18T12:26:49"
-          },
-          {
-            "gid": 9,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 10,
-            "last_ts": "2026-06-18T12:23:47"
-          },
-          {
-            "gid": 8,
-            "first": "Cam_104_Specialty",
-            "last": "Cam_104_Specialty",
-            "visits": 2,
-            "last_ts": "2026-06-18T12:23:01"
-          }
-        ],
-        "conversion_pct": 10.6,
+        "suspicious": 0,
+        "cross_cam": [],
+        "conversion_pct": 0.0,
         "family_groups": 0,
         "falls": 0,
         "zigzag": 0,
-        "shelf_engagement": 2,
+        "shelf_engagement": 0,
         "behaviors": {
-          "browse_shelf": 19
+          "browse_shelf": 7,
+          "walk_fast": 1,
+          "put_back": 1
         },
         "attribution": [],
-        "forecast_rest_day": 24
+        "forecast_rest_day": 28
       }
     }
   },
   "global": {
     "store_name": "我的店铺",
     "funnel": {
-      "浏览": 1054,
-      "完整动线": 0,
-      "入口": 321,
-      "收银": 34
+      "浏览": 4,
+      "完整动线": 0
     },
     "dwell_tiers": {
-      "浏览": 3,
+      "浏览": 4,
       "兴趣": 0,
       "意向": 0
     },
     "store_area_sqm": 120,
-    "conversion_pct": 10.6,
+    "conversion_pct": 0.0,
     "family_groups": 0,
     "falls": 0,
     "zigzag": 0,
     "behaviors": {
-      "browse_shelf": 19
+      "browse_shelf": 7,
+      "walk_fast": 1,
+      "put_back": 1
     },
     "attribution": {
       "insights": [],
@@ -397,368 +145,25 @@
       "vlm": true,
       "open_vocab": false,
       "ocr": true,
-      "event_clips": true,
+      "event_clips": false,
       "digital_twin": true,
       "multiview": true,
       "multistore": true,
       "face_blur": true,
-      "active_learning": true
+      "active_learning": false
     }
   },
-  "recent_events": [
-    {
-      "ts": "2026-06-18T12:59:46",
-      "cam": "Cam_104_Specialty",
-      "type": "alert",
-      "message": "[可疑停留] 可疑行为 2起"
-    },
-    {
-      "ts": "2026-06-18T12:58:53",
-      "cam": "Cam_231_Counter",
-      "type": "alert",
-      "message": "[转化率低] 转化率仅11% 优化动线"
-    },
-    {
-      "ts": "2026-06-18T12:56:13",
-      "cam": "Cam_104_Specialty",
-      "type": "alert",
-      "message": "[转化率低] 转化率仅10% 优化动线"
-    },
-    {
-      "ts": "2026-06-18T12:51:52",
-      "cam": "Cam_231_Counter",
-      "type": "alert",
-      "message": "[转化率低] 转化率仅10% 优化动线"
-    },
-    {
-      "ts": "2026-06-18T12:51:27",
-      "cam": "Cam_104_Specialty",
-      "type": "alert",
-      "message": "[可疑停留] 可疑行为 2起"
-    },
-    {
-      "ts": "2026-06-18T12:51:25",
-      "cam": "Cam_231_Counter",
-      "type": "alert",
-      "message": "[可疑停留] 可疑行为 2起"
-    },
-    {
-      "ts": "2026-06-18T12:51:23",
-      "cam": "Cam_104_Specialty",
-      "type": "alert",
-      "message": "[可疑停留] 可疑行为 2起"
-    },
-    {
-      "ts": "2026-06-18T12:51:21",
-      "cam": "Cam_231_Counter",
-      "type": "alert",
-      "message": "[可疑停留] 可疑行为 2起"
-    },
-    {
-      "ts": "2026-06-18T12:51:19",
-      "cam": "Cam_104_Specialty",
-      "type": "alert",
-      "message": "[可疑停留] 可疑行为 2起"
-    },
-    {
-      "ts": "2026-06-18T12:51:16",
-      "cam": "Cam_231_Counter",
-      "type": "alert",
-      "message": "[可疑停留] 可疑行为 2起"
-    },
-    {
-      "ts": "2026-06-18T12:51:13",
-      "cam": "Cam_104_Specialty",
-      "type": "alert",
-      "message": "[可疑停留] 可疑行为 2起"
-    },
-    {
-      "ts": "2026-06-18T12:51:10",
-      "cam": "Cam_231_Counter",
-      "type": "alert",
-      "message": "[可疑停留] 可疑行为 2起"
-    },
-    {
-      "ts": "2026-06-18T12:51:07",
-      "cam": "Cam_104_Specialty",
-      "type": "alert",
-      "message": "[可疑停留] 可疑行为 2起"
-    },
-    {
-      "ts": "2026-06-18T12:51:04",
-      "cam": "Cam_231_Counter",
-      "type": "alert",
-      "message": "[可疑停留] 可疑行为 2起"
-    },
-    {
-      "ts": "2026-06-18T12:51:00",
-      "cam": "Cam_104_Specialty",
-      "type": "alert",
-      "message": "[可疑停留] 可疑行为 2起"
-    },
-    {
-      "ts": "2026-06-18T12:50:57",
-      "cam": "Cam_231_Counter",
-      "type": "alert",
-      "message": "[可疑停留] 可疑行为 2起"
-    },
-    {
-      "ts": "2026-06-18T12:50:53",
-      "cam": "Cam_104_Specialty",
-      "type": "alert",
-      "message": "[可疑停留] 可疑行为 2起"
-    },
-    {
-      "ts": "2026-06-18T12:50:11",
-      "cam": "Cam_104_Specialty",
-      "type": "alert",
-      "message": "[店内拥挤] 拥挤告警 当前8人"
-    },
-    {
-      "ts": "2026-06-18T12:49:29",
-      "cam": "Cam_104_Specialty",
-      "type": "alert",
-      "message": "[转化率低] 转化率仅10% 优化动线"
-    },
-    {
-      "ts": "2026-06-18T12:47:11",
-      "cam": "Cam_231_Counter",
-      "type": "alert",
-      "message": "[转化率低] 转化率仅12% 优化动线"
-    }
-  ],
-  "hourly_chart": [
-    {
-      "hour": "12:00",
-      "count": 137
-    }
-  ],
-  "cross_cam": [
-    {
-      "gid": 1,
-      "first": "Cam_104_Specialty",
-      "last": "Cam_104_Specialty",
-      "visits": 1263,
-      "last_ts": "2026-06-18T12:59:46"
-    },
-    {
-      "gid": 3,
-      "first": "Cam_104_Specialty",
-      "last": "Cam_104_Specialty",
-      "visits": 34,
-      "last_ts": "2026-06-18T12:59:46"
-    },
-    {
-      "gid": 2,
-      "first": "Cam_104_Specialty",
-      "last": "Cam_104_Specialty",
-      "visits": 175,
-      "last_ts": "2026-06-18T12:59:39"
-    },
-    {
-      "gid": 5,
-      "first": "Cam_231_Counter",
-      "last": "Cam_104_Specialty",
-      "visits": 7,
-      "last_ts": "2026-06-18T12:56:36"
-    },
-    {
-      "gid": 6,
-      "first": "Cam_104_Specialty",
-      "last": "Cam_231_Counter",
-      "visits": 49,
-      "last_ts": "2026-06-18T12:56:23"
-    },
-    {
-      "gid": 4,
-      "first": "Cam_104_Specialty",
-      "last": "Cam_104_Specialty",
-      "visits": 31,
-      "last_ts": "2026-06-18T12:56:15"
-    },
-    {
-      "gid": 15,
-      "first": "Cam_104_Specialty",
-      "last": "Cam_104_Specialty",
-      "visits": 62,
-      "last_ts": "2026-06-18T12:31:40"
-    },
-    {
-      "gid": 18,
-      "first": "Cam_104_Specialty",
-      "last": "Cam_104_Specialty",
-      "visits": 2,
-      "last_ts": "2026-06-18T12:30:42"
-    },
-    {
-      "gid": 17,
-      "first": "Cam_231_Counter",
-      "last": "Cam_231_Counter",
-      "visits": 1,
-      "last_ts": "2026-06-18T12:29:28"
-    },
-    {
-      "gid": 16,
-      "first": "Cam_104_Specialty",
-      "last": "Cam_104_Specialty",
-      "visits": 3,
-      "last_ts": "2026-06-18T12:29:14"
-    },
-    {
-      "gid": 13,
-      "first": "Cam_104_Specialty",
-      "last": "Cam_104_Specialty",
-      "visits": 4,
-      "last_ts": "2026-06-18T12:28:51"
-    },
-    {
-      "gid": 14,
-      "first": "Cam_104_Specialty",
-      "last": "Cam_104_Specialty",
-      "visits": 10,
-      "last_ts": "2026-06-18T12:28:37"
-    },
-    {
-      "gid": 7,
-      "first": "Cam_104_Specialty",
-      "last": "Cam_231_Counter",
-      "visits": 13,
-      "last_ts": "2026-06-18T12:28:05"
-    },
-    {
-      "gid": 10,
-      "first": "Cam_104_Specialty",
-      "last": "Cam_104_Specialty",
-      "visits": 63,
-      "last_ts": "2026-06-18T12:28:01"
-    },
-    {
-      "gid": 12,
-      "first": "Cam_104_Specialty",
-      "last": "Cam_104_Specialty",
-      "visits": 3,
-      "last_ts": "2026-06-18T12:27:32"
-    },
-    {
-      "gid": 11,
-      "first": "Cam_104_Specialty",
-      "last": "Cam_104_Specialty",
-      "visits": 4,
-      "last_ts": "2026-06-18T12:26:49"
-    },
-    {
-      "gid": 9,
-      "first": "Cam_104_Specialty",
-      "last": "Cam_104_Specialty",
-      "visits": 10,
-      "last_ts": "2026-06-18T12:23:47"
-    },
-    {
-      "gid": 8,
-      "first": "Cam_104_Specialty",
-      "last": "Cam_104_Specialty",
-      "visits": 2,
-      "last_ts": "2026-06-18T12:23:01"
-    }
-  ],
-  "behaviors": [
-    {
-      "ts": "2026-06-18T12:59:46",
-      "cam": "Cam_104_Specialty",
-      "behavior": "browse_shelf",
-      "track_id": "\u0004\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
-    },
-    {
-      "ts": "2026-06-18T12:59:39",
-      "cam": "Cam_104_Specialty",
-      "behavior": "browse_shelf",
-      "track_id": "\u0005\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
-    },
-    {
-      "ts": "2026-06-18T12:59:39",
-      "cam": "Cam_104_Specialty",
-      "behavior": "browse_shelf",
-      "track_id": "\u0004\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
-    },
-    {
-      "ts": "2026-06-18T12:59:16",
-      "cam": "Cam_104_Specialty",
-      "behavior": "browse_shelf",
-      "track_id": "\u0005\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
-    },
-    {
-      "ts": "2026-06-18T12:59:16",
-      "cam": "Cam_104_Specialty",
-      "behavior": "browse_shelf",
-      "track_id": "\u0004\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
-    },
-    {
-      "ts": "2026-06-18T12:59:12",
-      "cam": "Cam_104_Specialty",
-      "behavior": "browse_shelf",
-      "track_id": "\u0005\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
-    },
-    {
-      "ts": "2026-06-18T12:59:12",
-      "cam": "Cam_104_Specialty",
-      "behavior": "browse_shelf",
-      "track_id": "\u0004\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
-    },
-    {
-      "ts": "2026-06-18T12:59:09",
-      "cam": "Cam_104_Specialty",
-      "behavior": "browse_shelf",
-      "track_id": "\u0005\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
-    },
-    {
-      "ts": "2026-06-18T12:59:09",
-      "cam": "Cam_104_Specialty",
-      "behavior": "browse_shelf",
-      "track_id": "\u0004\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
-    },
-    {
-      "ts": "2026-06-18T12:59:07",
-      "cam": "Cam_104_Specialty",
-      "behavior": "browse_shelf",
-      "track_id": "\u0005\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
-    },
-    {
-      "ts": "2026-06-18T12:59:07",
-      "cam": "Cam_104_Specialty",
-      "behavior": "browse_shelf",
-      "track_id": "\u0004\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
-    },
-    {
-      "ts": "2026-06-18T12:59:06",
-      "cam": "Cam_104_Specialty",
-      "behavior": "browse_shelf",
-      "track_id": "\u0005\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
-    },
-    {
-      "ts": "2026-06-18T12:59:06",
-      "cam": "Cam_104_Specialty",
-      "behavior": "browse_shelf",
-      "track_id": "\u0004\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
-    },
-    {
-      "ts": "2026-06-18T12:59:04",
-      "cam": "Cam_104_Specialty",
-      "behavior": "browse_shelf",
-      "track_id": "\u0005\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
-    },
-    {
-      "ts": "2026-06-18T12:59:04",
-      "cam": "Cam_104_Specialty",
-      "behavior": "browse_shelf",
-      "track_id": "\u0004\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
-    }
-  ],
-  "vlm_insight": "我的店铺 场景快照：当前 1 人，排队 0，进店累计相关指标正常。近期告警：[12:29:50] [可疑停留] 可疑行为 10起; [12:29:48] [可疑停留] 可疑行为 10起; [12:29:47] [可疑停留] 可疑行为 10起",
   "vlm": {
-    "ts": "2026-06-18T12:29:50",
-    "insight": "我的店铺 场景快照：当前 1 人，排队 0，进店累计相关指标正常。近期告警：[12:29:50] [可疑停留] 可疑行为 10起; [12:29:48] [可疑停留] 可疑行为 10起; [12:29:47] [可疑停留] 可疑行为 10起"
+    "ts": "2026-06-18T13:21:58",
+    "insight": "我的店铺 场景快照：当前 1 人，排队 0，进店累计相关指标正常。近期告警：[13:21:39] [跨区顾客] 跨摄像头识别 1人"
   },
   "clips": [
+    {
+      "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_131714__转化率低__转化率仅11__优化动线.mp4",
+      "cam": "Cam_231_Counter",
+      "message": "[转化率低] 转化率仅11% 优化动线",
+      "ts": "2026-06-18T13:17:15"
+    },
     {
       "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122151__可疑停留__可疑行为_1起.mp4",
       "cam": "Cam_231_Counter",
@@ -812,12 +217,6 @@
       "cam": "Cam_104_Specialty",
       "message": "[可疑停留] 可疑行为 1起",
       "ts": "2026-06-18T12:21:55"
-    },
-    {
-      "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122202__可疑停留__可疑行为_1起.mp4",
-      "cam": "Cam_231_Counter",
-      "message": "[可疑停留] 可疑行为 1起",
-      "ts": "2026-06-18T12:22:03"
     }
   ],
   "twin": {
@@ -831,25 +230,25 @@
       {
         "x": 11,
         "y": 4,
-        "heat": 7.33
+        "heat": 4.78
       },
       {
-        "x": 3,
-        "y": 7,
-        "heat": 8.28
+        "x": 9,
+        "y": 6,
+        "heat": 6.43
       },
       {
-        "x": 4,
-        "y": 7,
-        "heat": 7.28
+        "x": 6,
+        "y": 15,
+        "heat": 7.92
       }
     ],
-    "updated": "2026-06-18T12:59:50",
+    "updated": "2026-06-18T13:22:55",
     "simulation": {
       "scenario": "checkout_relocate",
       "shift_cols": 3,
-      "peak_before": 8.275484085083008,
-      "peak_after": 8.275484085083008,
+      "peak_before": 7.922993183135986,
+      "peak_after": 7.922993183135986,
       "hint": "右移收银台可能缓解入口侧堆积"
     }
   },
@@ -859,17 +258,17 @@
       {
         "gx": 14,
         "gy": 8,
-        "v": 1.276
+        "v": 1.07
       },
       {
-        "gx": 4,
-        "gy": 15,
-        "v": 1.42
+        "gx": 12,
+        "gy": 12,
+        "v": 1.306
       },
       {
-        "gx": 6,
-        "gy": 15,
-        "v": 1.271
+        "gx": 8,
+        "gy": 30,
+        "v": 0.861
       }
     ],
     "cam_count": 2
@@ -880,60 +279,60 @@
   },
   "active_learning": [
     {
-      "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125949_829419.jpg",
-      "cam": "Cam_104_Specialty",
-      "reason": "low_conf",
-      "conf": 0.4043057858943939,
-      "ts": "2026-06-18T12:59:49"
-    },
-    {
-      "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_231_Counter_20260618_125942_389980.jpg",
+      "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_231_Counter_20260618_131843_064327.jpg",
       "cam": "Cam_231_Counter",
       "reason": "low_conf",
-      "conf": 0.270851194858551,
-      "ts": "2026-06-18T12:59:42"
+      "conf": 0.33712542057037354,
+      "ts": "2026-06-18T13:18:43"
     },
     {
-      "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125916_161441.jpg",
-      "cam": "Cam_104_Specialty",
-      "reason": "low_conf",
-      "conf": 0.39191755652427673,
-      "ts": "2026-06-18T12:59:16"
-    },
-    {
-      "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125912_693368.jpg",
-      "cam": "Cam_104_Specialty",
-      "reason": "low_conf",
-      "conf": 0.38391372561454773,
-      "ts": "2026-06-18T12:59:12"
-    },
-    {
-      "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_231_Counter_20260618_125910_182171.jpg",
+      "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_231_Counter_20260618_131802_658652.jpg",
       "cam": "Cam_231_Counter",
       "reason": "low_conf",
-      "conf": 0.2514435648918152,
-      "ts": "2026-06-18T12:59:10"
+      "conf": 0.3653118312358856,
+      "ts": "2026-06-18T13:18:02"
     },
     {
-      "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125909_922070.jpg",
+      "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_131759_116779.jpg",
       "cam": "Cam_104_Specialty",
       "reason": "low_conf",
-      "conf": 0.4466550946235657,
-      "ts": "2026-06-18T12:59:09"
+      "conf": 0.4431167542934418,
+      "ts": "2026-06-18T13:17:59"
     },
     {
-      "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_125904_431263.jpg",
-      "cam": "Cam_104_Specialty",
-      "reason": "low_conf",
-      "conf": 0.3999871015548706,
-      "ts": "2026-06-18T12:59:04"
-    },
-    {
-      "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_231_Counter_20260618_125903_801255.jpg",
+      "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_231_Counter_20260618_131757_612378.jpg",
       "cam": "Cam_231_Counter",
       "reason": "low_conf",
-      "conf": 0.3884444832801819,
-      "ts": "2026-06-18T12:59:03"
+      "conf": 0.2550995647907257,
+      "ts": "2026-06-18T13:17:57"
+    },
+    {
+      "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_231_Counter_20260618_131756_027209.jpg",
+      "cam": "Cam_231_Counter",
+      "reason": "low_conf",
+      "conf": 0.3332923352718353,
+      "ts": "2026-06-18T13:17:56"
+    },
+    {
+      "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_231_Counter_20260618_131754_645150.jpg",
+      "cam": "Cam_231_Counter",
+      "reason": "low_conf",
+      "conf": 0.3872157037258148,
+      "ts": "2026-06-18T13:17:54"
+    },
+    {
+      "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_231_Counter_20260618_131753_489743.jpg",
+      "cam": "Cam_231_Counter",
+      "reason": "low_conf",
+      "conf": 0.3766990303993225,
+      "ts": "2026-06-18T13:17:53"
+    },
+    {
+      "path": "/Users/james/Project/jiance/store/analytics_logs/active_learning/Cam_104_Specialty_20260618_131751_907683.jpg",
+      "cam": "Cam_104_Specialty",
+      "reason": "low_conf",
+      "conf": 0.3232681453227997,
+      "ts": "2026-06-18T13:17:51"
     }
   ]
 }

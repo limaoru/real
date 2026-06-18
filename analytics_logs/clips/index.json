@@ -1,5 +1,11 @@
 [
   {
+    "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_131714__转化率低__转化率仅11__优化动线.mp4",
+    "cam": "Cam_231_Counter",
+    "message": "[转化率低] 转化率仅11% 优化动线",
+    "ts": "2026-06-18T13:17:15"
+  },
+  {
     "path": "/Users/james/Project/jiance/store/analytics_logs/clips/Cam_231_Counter_20260618_122151__可疑停留__可疑行为_1起.mp4",
     "cam": "Cam_231_Counter",
     "message": "[可疑停留] 可疑行为 1起",

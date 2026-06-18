@@ -9,25 +9,25 @@
     {
       "x": 11,
       "y": 4,
-      "heat": 7.33
+      "heat": 4.78
     },
     {
-      "x": 3,
-      "y": 7,
-      "heat": 8.28
+      "x": 9,
+      "y": 6,
+      "heat": 6.43
     },
     {
-      "x": 4,
-      "y": 7,
-      "heat": 7.28
+      "x": 6,
+      "y": 15,
+      "heat": 7.92
     }
   ],
-  "updated": "2026-06-18T12:59:50",
+  "updated": "2026-06-18T13:22:55",
   "simulation": {
     "scenario": "checkout_relocate",
     "shift_cols": 3,
-    "peak_before": 8.275484085083008,
-    "peak_after": 8.275484085083008,
+    "peak_before": 7.922993183135986,
+    "peak_after": 7.922993183135986,
     "hint": "右移收银台可能缓解入口侧堆积"
   }
 }

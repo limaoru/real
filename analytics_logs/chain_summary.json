@@ -1,17 +1,15 @@
 {
   "chain_id": "chain_001",
-  "updated": "2026-06-18T12:59:50",
+  "updated": "2026-06-18T13:22:55",
   "stores": [
     {
       "store_id": "store_001",
       "name": "我的店铺",
-      "persons": 2,
-      "conversion_pct": 10.6,
+      "persons": 0,
+      "conversion_pct": 0.0,
       "funnel": {
-        "浏览": 1054,
-        "完整动线": 0,
-        "入口": 321,
-        "收银": 34
+        "浏览": 4,
+        "完整动线": 0
       },
       "falls": 0
     }
